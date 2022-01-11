@@ -1,5 +1,5 @@
 //"our-domain.com/""
-
+import { MongoClient } from "mongodb";
 import Layout from "../components/layout/Layout";
 import MainNavigation from "../components/layout/MainNavigation";
 import TourList from "../components/tours/TourList";
@@ -29,12 +29,40 @@ const DUMMY_DATA = [
   },
 ];
 
-const HomePage = () => {
+const HomePage = (props) => {
   return (
     <Layout>
-      <TourList tours={DUMMY_DATA} />
+      <TourList tours={props.tours} />
     </Layout>
   );
 };
+
+export async function getStaticProps() {
+  const client = await MongoClient.connect(
+    "mongodb+srv://Admin:admin@cluster0.typrr.mongodb.net/tours?retryWrites=true&w=majority"
+  );
+  const db = client.db();
+
+  const toursCollections = db.collection("tours");
+
+  const tours = await toursCollections.find().toArray();
+
+  client.close();
+
+  return {
+    props: {
+      tours: tours.map((tour) => ({
+        title: tour.title,
+        country: tour.country,
+        date: tour.date,
+        photo: tour.photo,
+        price: tour.price,
+        description: tour.description,
+        id: tour._id.toString(),
+      })),
+    },
+    revalidate: 3,
+  };
+}
 
 export default HomePage;

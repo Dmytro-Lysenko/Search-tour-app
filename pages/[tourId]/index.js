@@ -1,16 +1,68 @@
+import { MongoClient, ObjectId } from "mongodb";
 import TourDetail from "../../components/tours/TourDetail";
 
 const TourDetails = (props) => {
   return (
     <TourDetail
-      title="Hollidays in Wroclaw"
-      country="Poland"
-      date="2022-12-05"
-      photo="https://discover-ukraine.info/uploads/i/i/4f9905f66ba892.88492562.10.jpg"
-      price="229"
-      description="Wrocław is the historical capital of Silesia and Lower Silesia. Today, it is the capital of the Lower Silesian Voivodeship. The history of the city dates back over a thousand years; at various times, it has been part of the Kingdom of Poland, the Kingdom of Bohemia, the Kingdom of Hungary, the Habsburg Monarchy of Austria, the Kingdom of Prussia and Germany."
+      title={props.tourData.title}
+      country={props.tourData.title}
+      date={props.tourData.date}
+      photo={props.tourData.photo}
+      price={props.tourData.price}
+      description={props.tourData.description}
     />
   );
 };
+
+export async function getStaticPaths() {
+  const client = await MongoClient.connect(
+    "mongodb+srv://Admin:admin@cluster0.typrr.mongodb.net/tours?retryWrites=true&w=majority"
+  );
+  const db = client.db();
+
+  const toursCollections = db.collection("tours");
+
+  const tours = await toursCollections.find({}, { _id: 1 }).toArray();
+
+  client.close();
+
+  return {
+    fallback: false,
+    paths: tours.map((tour) => ({ params: { tourId: tour._id.toString() } })),
+  };
+}
+
+export async function getStaticProps(context) {
+  // fetch data for a single meetup
+
+  const tourId = context.params.tourId;
+
+  const client = await MongoClient.connect(
+    "mongodb+srv://Admin:admin@cluster0.typrr.mongodb.net/tours?retryWrites=true&w=majority"
+  );
+  const db = client.db();
+
+  const toursCollections = db.collection("tours");
+
+  const selectedTour = await toursCollections.findOne({
+    _id: ObjectId(tourId),
+  });
+
+  client.close();
+
+  return {
+    props: {
+      tourData: {
+        id: selectedTour._id.toString(),
+        title: selectedTour.title,
+        country: selectedTour.country,
+        date: selectedTour.date,
+        photo: selectedTour.photo,
+        price: selectedTour.price,
+        description: selectedTour.description,
+      },
+    },
+  };
+}
 
 export default TourDetails;

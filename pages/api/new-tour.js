@@ -1,21 +1,25 @@
+// "api/new-tour"
 import { MongoClient } from "mongodb";
 
-// "api/new-tour"
 
-async function handler(reg, res) {
+async function handler(req, res) {
   if (req.method === "POST") {
     const data = req.body;
 
-    const { title, country, date, price, photo, description } = data;
-
     const client = await MongoClient.connect(
-      "mongodb+srv://Admin:admin@cluster0.typrr.mongodb.net/tour-app?retryWrites=true&w=majority"
+      "mongodb+srv://Admin:admin@cluster0.typrr.mongodb.net/tours?retryWrites=true&w=majority"
     );
     const db = client.db();
 
     const toursCollections = db.collection("tours");
 
-    toursCollections.insertOne
+    const result = await toursCollections.insertOne(data);
+
+    console.log(result);
+
+    client.close();
+
+    res.status(201).json({ message: "Tour inserted" });
   }
 }
 
