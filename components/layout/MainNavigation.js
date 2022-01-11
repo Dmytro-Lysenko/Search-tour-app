@@ -1,13 +1,17 @@
 import classes from "./MainNavigation.module.css";
 
 import Link from "next/link";
+import HeaderCartButton from "./HeaderCartButton";
+import { useRouter } from "next/router";
 
-function MainNavigation() {
+function MainNavigation(props) {
+  const router = useRouter();
+
   return (
     <header className={classes.header}>
-      <div className={classes.logo}>React Tours App</div>
       <nav>
         <ul>
+          <div className={classes.logo}>React Tours App</div>
           <li>
             <Link href="/">All Tours</Link>
           </li>
@@ -15,7 +19,7 @@ function MainNavigation() {
             <Link href="/favorites">Favorites</Link>
           </li>
           <li>
-            <Link href="/cart">Cart</Link>
+            <HeaderCartButton />
           </li>
           <li>
             <Link href="/new-tour">Add New Tour</Link>

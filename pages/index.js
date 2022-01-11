@@ -3,7 +3,8 @@ import Head from "next/head";
 import { MongoClient } from "mongodb";
 
 import TourList from "../components/tours/TourList";
-import { Fragment } from "react";
+import CartProvider from "../components/store/CartProvider";
+import { FavoriteContextProvider } from "../components/store/favorites-context";
 
 const DUMMY_DATA = [
   {
@@ -32,16 +33,18 @@ const DUMMY_DATA = [
 
 const HomePage = (props) => {
   return (
-    <Fragment>
-      <Head>
-        <title>Tours</title>
-        <meta
-          name="description"
-          content="Choose some nice tour to visit new country!"
-        />
-      </Head>
-      <TourList tours={props.tours} />
-    </Fragment>
+    <CartProvider>
+      <FavoriteContextProvider>
+        <Head>
+          <title>Tours</title>
+          <meta
+            name="description"
+            content="Choose some nice tour to visit new country!"
+          />
+        </Head>
+        <TourList tours={props.tours} />
+      </FavoriteContextProvider>
+    </CartProvider>
   );
 };
 

@@ -2,6 +2,7 @@ import Head from "next/head";
 import { Fragment, useContext } from "react";
 import FavoriteContext from "../../components/store/favorites-context";
 import TourList from "../../components/tours/TourList";
+import CartIcon from "../../components/ui/CartIcon";
 
 const Favorites = () => {
   const favoriteCtx = useContext(FavoriteContext);
@@ -21,6 +22,7 @@ const Favorites = () => {
       ) : (
         <TourList tours={favoriteTours} />
       )}
+      <CartIcon />
     </Fragment>
   );
 };
