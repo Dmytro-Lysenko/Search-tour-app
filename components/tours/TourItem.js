@@ -20,14 +20,12 @@ function TourItem(props) {
   };
 
   const addToCartHandler = () => {
-   
     // favoritesCtx.addToFavTours();
     if (isFavorite) {
       favoritesCtx.deleteFromFavoritesTours(props.id);
     } else {
       favoritesCtx.addToFavTours(props);
     }
-    console.log(favoritesCtx.favoriteTours);
   };
 
   return (

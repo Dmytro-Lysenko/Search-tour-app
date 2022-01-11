@@ -18,9 +18,9 @@ function MainNavigation(props) {
           <li>
             <Link href="/favorites">Favorites</Link>
           </li>
-          <li>
-            <HeaderCartButton />
-          </li>
+
+          <HeaderCartButton />
+
           <li>
             <Link href="/new-tour">Add New Tour</Link>
           </li>

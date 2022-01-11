@@ -1,0 +1,46 @@
+.tour {
+  list-style: none;
+  display: flex;
+  max-width: 35rem;
+  margin: 1rem auto;
+}
+
+.photo {
+  width: 43rem;
+}
+
+.photo img {
+  display: block;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  align-items: flex-end;
+  padding-right: 5rem;
+}
+
+.content > h1 {
+  font-size: 1.2rem;
+  padding: 0;
+  margin: 0;
+}
+
+.input {
+  display: flex;
+}
+
+.input span {
+  width: 1.5rem;
+  text-align: center;
+  background-color: darkgray;
+}
+
+.input input {
+  width: 2rem;
+  padding: 0;
+}

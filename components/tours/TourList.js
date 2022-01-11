@@ -8,8 +8,8 @@ function TourList(props) {
         <TourItem
           key={tour.id}
           id={tour.id}
-          title={tour.image}
-          country={tour.title}
+          title={tour.title}
+          country={tour.country}
           date={tour.date}
           photo={tour.photo}
           price={tour.price}
