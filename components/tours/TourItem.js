@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import FavoriteContext from "../store/favorites-context";
 
 import Card from "../ui/Card";
 import classes from "./TourItem.module.css";
@@ -7,6 +8,8 @@ import classes from "./TourItem.module.css";
 function TourItem(props) {
   const [readMore, setReadMore] = useState(false);
   const router = useRouter();
+  const favoritesCtx = useContext(FavoriteContext);
+  const isFavorite = favoritesCtx.isFavorite(props.id);
 
   function showDetailsHandler() {
     router.push("/" + props.id);
@@ -14,6 +17,17 @@ function TourItem(props) {
 
   const toogleReadMoreHandler = () => {
     setReadMore(!readMore);
+  };
+
+  const addToCartHandler = () => {
+   
+    // favoritesCtx.addToFavTours();
+    if (isFavorite) {
+      favoritesCtx.deleteFromFavoritesTours(props.id);
+    } else {
+      favoritesCtx.addToFavTours(props);
+    }
+    console.log(favoritesCtx.favoriteTours);
   };
 
   return (
@@ -41,6 +55,11 @@ function TourItem(props) {
         </div>
         <div className={classes.actions}>
           <button onClick={showDetailsHandler}>Show Details</button>
+        </div>
+        <div className={classes.actions}>
+          <button onClick={() => addToCartHandler(props)}>
+            {!isFavorite ? "Add to favorite" : "Del from favorites"}
+          </button>
         </div>
       </Card>
     </li>
