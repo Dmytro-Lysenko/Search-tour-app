@@ -3,7 +3,7 @@ import { useRef } from "react";
 import Card from "../ui/Card";
 import classes from "./NewTourForm.module.css";
 
-function NewMeetupForm(props) {
+function NewTourForm(props) {
   const titleInputRef = useRef();
   const countryInputRef = useRef();
   const dateInputRef = useRef();
@@ -73,4 +73,4 @@ function NewMeetupForm(props) {
   );
 }
 
-export default NewMeetupForm;
+export default NewTourForm;

@@ -1,16 +1,24 @@
 import { MongoClient, ObjectId } from "mongodb";
+import Head from "next/head";
+import { Fragment } from "react";
 import TourDetail from "../../components/tours/TourDetail";
 
 const TourDetails = (props) => {
   return (
-    <TourDetail
-      title={props.tourData.title}
-      country={props.tourData.title}
-      date={props.tourData.date}
-      photo={props.tourData.photo}
-      price={props.tourData.price}
-      description={props.tourData.description}
-    />
+    <Fragment>
+      <Head>
+        <title>{props.tourData.title}</title>
+        <meta name="description" content={props.tourData.description} />
+      </Head>
+      <TourDetail
+        title={props.tourData.title}
+        country={props.tourData.title}
+        date={props.tourData.date}
+        photo={props.tourData.photo}
+        price={props.tourData.price}
+        description={props.tourData.description}
+      />
+    </Fragment>
   );
 };
 

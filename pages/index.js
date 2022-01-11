@@ -1,8 +1,9 @@
 //"our-domain.com/""
+import Head from "next/head";
 import { MongoClient } from "mongodb";
-import Layout from "../components/layout/Layout";
-import MainNavigation from "../components/layout/MainNavigation";
+
 import TourList from "../components/tours/TourList";
+import { Fragment } from "react";
 
 const DUMMY_DATA = [
   {
@@ -31,9 +32,16 @@ const DUMMY_DATA = [
 
 const HomePage = (props) => {
   return (
-    <Layout>
+    <Fragment>
+      <Head>
+        <title>Tours</title>
+        <meta
+          name="description"
+          content="Choose some nice tour to visit new country!"
+        />
+      </Head>
       <TourList tours={props.tours} />
-    </Layout>
+    </Fragment>
   );
 };
 

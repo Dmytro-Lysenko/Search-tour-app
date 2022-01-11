@@ -12,9 +12,6 @@ function MainNavigation() {
             <Link href="/">All Tours</Link>
           </li>
           <li>
-            <Link href="/favorite">Favorite tours</Link>
-          </li>
-          <li>
             <Link href="/cart">Cart</Link>
           </li>
           <li>

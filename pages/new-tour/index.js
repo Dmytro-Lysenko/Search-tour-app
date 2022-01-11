@@ -1,5 +1,7 @@
 import { useRouter } from "next/router";
-import NewMeetupForm from "../../components/tours/NewTourForm";
+import Head from "next/head";
+import { Fragment } from "react";
+import NewTourForm from "../../components/tours/NewTourForm";
 
 const NewTour = () => {
   const router = useRouter();
@@ -19,7 +21,18 @@ const NewTour = () => {
     router.push("/");
   }
 
-  return <NewMeetupForm onAddTour={addTourHandler} />;
+  return (
+    <Fragment>
+      <Head>
+        <title>Add new tour</title>
+        <meta
+          name="description"
+          content="Add new tour and help other to learn moore about new countries!"
+        />
+      </Head>
+      <NewTourForm onAddTour={addTourHandler} />
+    </Fragment>
+  );
 };
 
 export default NewTour;
