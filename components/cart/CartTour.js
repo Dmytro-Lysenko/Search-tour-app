@@ -4,13 +4,18 @@ import classes from "./CartList.module.css";
 const CartTour = (props) => {
   const amountInput = useRef();
   const [amountValue, setAmountValue] = useState(1);
+  const [total, setTotal] = useState(+props.price);
 
   const increaseHandler = () => {
     const enteredInputAmount = amountInput.current.value;
     if (enteredInputAmount < 10) {
       setAmountValue((prevAmount) => {
-        return (prevAmount = amountValue++);
+        return amountValue + 1;
       });
+      setTotal((prevTotal) => {
+        return (prevTotal = (amountValue + 1) * +props.price);
+      });
+      console.log(total);
     }
   };
 
@@ -20,12 +25,16 @@ const CartTour = (props) => {
       setAmountValue((prevAmount) => {
         return amountValue--;
       });
+      setTotal((prevTotal) => {
+        return (prevTotal = (amountValue + 1) * +props.price);
+      });
     }
   };
 
   const changeHandler = () => {
     const enteredInputAmount = amountInput.current.value;
     setAmountValue(enteredInputAmount);
+    setTotal(amountValue * props.price);
   };
 
   return (
@@ -52,7 +61,7 @@ const CartTour = (props) => {
           />
           <span onClick={increaseHandler}>+</span>
         </h1>
-        <h1>Total: </h1>
+        <h1>Total: {total}</h1>
       </div>
     </li>
   );
