@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import classes from "./CartList.module.css";
+import classes from "./CartTour.module.css";
 import CartContext from "../store/cart-context";
 import { useContext } from "react";
 
@@ -10,7 +10,7 @@ const CartTour = (props) => {
   const [total, setTotal] = useState(+props.price);
 
   const deleteFromCartHandler = () => {
-    cartCtx.deleteTourFromCart(props.id)
+    cartCtx.deleteTourFromCart(props.id);
   };
 
   const increaseHandler = () => {
@@ -54,7 +54,10 @@ const CartTour = (props) => {
         <h1>Price: {props.price} $</h1>
         <h1>Date: {props.date}</h1>
         <h1 className={classes.input}>
-          Tourist:<span onClick={decreaseHandler}>-</span>
+          Tourist:
+          <span className={classes["buttons-span"]} onClick={decreaseHandler}>
+            -
+          </span>
           <input
             id="tourist"
             type="number"
@@ -66,7 +69,9 @@ const CartTour = (props) => {
             value={amountValue}
             onChange={changeHandler}
           />
-          <span onClick={increaseHandler}>+</span>
+          <span className={classes["buttons-span"]} onClick={increaseHandler}>
+            +
+          </span>
         </h1>
         <h1>Total: {total}</h1>
         <button onClick={() => deleteFromCartHandler(props.id)}>

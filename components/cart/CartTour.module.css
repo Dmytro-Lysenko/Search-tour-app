@@ -24,6 +24,10 @@
   padding-right: 5rem;
 }
 
+.buttons-span {
+  cursor: pointer;
+}
+
 .content > h1 {
   font-size: 1.2rem;
   padding: 0;

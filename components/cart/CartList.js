@@ -1,15 +1,27 @@
 import CartTour from "./CartTour";
-import FavoriteContext from "../store/favorites-context";
+import CartContext from "../store/cart-context";
 import { useContext } from "react";
 
 const CartList = (props) => {
   console.log(props.tours);
-  //   const favoriteCtx = useContext(FavoriteContext);
-  //   const favoriteTours = favoriteCtx.favoriteTours;
-  //   console.log(favoriteTours);
+  const cartCtx = useContext(CartContext);
+
+  const test = [
+    { id: "2", price: 230 },
+    { id: "3", price: 260 },
+  ];
+  const price = test.map((item) => item.price);
+  const updPrice = price.reduce((a, b) => a + b, 0);
+  console.log(price);
+  console.log(updPrice);
+
   if (props.tours.length === 0) {
     return <p>Thre is no items in cart</p>;
   }
+  const clearCartHandler = () => {
+    cartCtx.clearCart();
+  };
+
   return (
     <div>
       Cart CartList
@@ -23,6 +35,8 @@ const CartList = (props) => {
           photo={tour.photo}
         />
       ))}
+      <div>Total: {cartCtx.totalCartPrice}</div>
+      <button onClick={clearCartHandler}>Clear the cart</button>
     </div>
   );
 };
