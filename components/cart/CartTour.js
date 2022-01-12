@@ -1,10 +1,17 @@
 import { useRef, useState } from "react";
 import classes from "./CartList.module.css";
+import CartContext from "../store/cart-context";
+import { useContext } from "react";
 
 const CartTour = (props) => {
   const amountInput = useRef();
+  const cartCtx = useContext(CartContext);
   const [amountValue, setAmountValue] = useState(1);
   const [total, setTotal] = useState(+props.price);
+
+  const deleteFromCartHandler = () => {
+    cartCtx.deleteTourFromCart(props.id)
+  };
 
   const increaseHandler = () => {
     const enteredInputAmount = amountInput.current.value;
@@ -62,6 +69,9 @@ const CartTour = (props) => {
           <span onClick={increaseHandler}>+</span>
         </h1>
         <h1>Total: {total}</h1>
+        <button onClick={() => deleteFromCartHandler(props.id)}>
+          Delete from cart
+        </button>
       </div>
     </li>
   );

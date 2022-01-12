@@ -3,12 +3,22 @@ import Head from "next/head";
 import { MongoClient } from "mongodb";
 
 import TourList from "../components/tours/TourList";
+import AllTourContext from "../components/store/allTours-context";
 import CartProvider from "../components/store/CartProvider";
-import { Fragment } from "react";
-
-
+import { Fragment, useContext, useState } from "react";
+import SearchForm from "../components/search/SearchForm";
 
 const HomePage = (props) => {
+  const allToursCtx = useContext(AllTourContext);
+  allToursCtx.allTours = props.tours;
+  const [allTours, setAllTours] = useState(allToursCtx.allTours);
+ 
+
+  const sortHandler = (input) => {
+    allToursCtx.allTours = input;
+    allToursCtx.setTours(input);
+  };
+
   return (
     // <CartProvider>
 
@@ -20,7 +30,8 @@ const HomePage = (props) => {
           content="Choose some nice tour to visit new country!"
         />
       </Head>
-      <TourList tours={props.tours} />
+      <SearchForm onInput={sortHandler} tours={allTours} />
+      <TourList tours={allTours} />
     </Fragment>
 
     // </CartProvider>

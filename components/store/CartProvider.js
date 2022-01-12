@@ -1,6 +1,6 @@
 import { useReducer } from "react";
 
-import CartContext from "./cart-context";
+import CartContext from "./new-cart-context";
 
 const defaultCartState = {
   tours: [],
@@ -10,12 +10,13 @@ const defaultCartState = {
 const cartReducer = (state, action) => {
   if (action === "ADD") {
     const updatedTours = state.tours.concat(action.tour);
-    const updatedTotalAmount =
-      state.totalAmount + action.tour.price * action.tour.amount;
+
+    // const updatedTotalAmount =
+    //   state.totalAmount + action.tour.price * action.tour.amount;
 
     return {
       tours: updatedTours,
-      totalAmount: updatedTotalAmount,
+      // totalAmount: updatedTotalAmount,
     };
   }
   return defaultCartState;
@@ -27,14 +28,15 @@ const CartProvider = (props) => {
     defaultCartState
   );
 
-  const addItemToCartHandler = (tour) => {
+  const addTourToCartHandler = (tour) => {
+    console.log(tour);
     dispatchCartAction({
       type: "ADD",
       tour: tour,
     });
   };
 
-  const removeItemFromCartHandler = (id) => {
+  const removeTourFromCartHandler = (id) => {
     dispatchCartAction({
       type: "REMOVE",
       id: id,
@@ -42,10 +44,10 @@ const CartProvider = (props) => {
   };
 
   const cartContext = {
-    items: cartState.tours,
+    tours: cartState.tours,
     totalAmount: cartState.totalAmount,
-    addItem: addItemToCartHandler,
-    removeItem: removeItemFromCartHandler,
+    addTour: addTourToCartHandler,
+    removeTour: removeTourFromCartHandler,
   };
 
   return (

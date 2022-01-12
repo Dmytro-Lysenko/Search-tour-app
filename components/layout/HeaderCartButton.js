@@ -1,15 +1,24 @@
 import { useRouter } from "next/router";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import CartIcon from "../ui/CartIcon";
 import classes from "./HeaderCartButton.module.css";
 import CartContext from "../store/cart-context";
 
 const HeaderCartButton = (props) => {
-  const cartContext = useContext(CartContext);
+  const [number, setNumber] = useState(0);
+  const cartCtx = useContext(CartContext);
 
-  const numberOfCartItems = cartContext.tours.reduce((curNum, item) => {
-    return curNum + item.amount;
-  }, 0);
+  useEffect(() => {
+    setNumber(cartCtx.totlaCartTours);
+  }, [cartCtx.totlaCartTours,cartCtx.cartTours]);
+
+  console.log(cartCtx.totlaCartTours);
+  console.log(cartCtx.cartTours.length);
+
+  // const numberOfCartItems = cartContext.tours.reduce((curNum, item) => {
+  //   return curNum + item.amount;
+  // }, 0);
+  // const numberOfCartItems = cartCtx.totlaCartTours;
 
   const router = useRouter();
   const headerCartHandler = () => {
@@ -23,7 +32,7 @@ const HeaderCartButton = (props) => {
           <CartIcon />
         </span>
         <span className={classes.cart}>Cart</span>
-        <span className={classes.badge}>{numberOfCartItems}</span>
+        <span className={classes.badge}>{cartCtx.cartTours.length}</span>
       </button>
     </li>
   );
