@@ -13,6 +13,7 @@ const CartTour = (props) => {
     cartCtx.deleteTourFromCart(props.id);
   };
 
+  console.log(cartCtx.totalCartPrice);
   const increaseHandler = () => {
     const enteredInputAmount = amountInput.current.value;
     if (enteredInputAmount < 10) {
@@ -22,8 +23,10 @@ const CartTour = (props) => {
       setTotal((prevTotal) => {
         return (prevTotal = (amountValue + 1) * +props.price);
       });
-      console.log(total);
+      cartCtx.addToTotalPrices(+props.price);
+      cartCtx.addToPrices(+props.price);
     }
+    console.log(cartCtx.totalCartPrice);
   };
 
   const decreaseHandler = () => {
@@ -35,6 +38,8 @@ const CartTour = (props) => {
       setTotal((prevTotal) => {
         return (prevTotal = (amountValue + 1) * +props.price);
       });
+      cartCtx.delFromPrices(+props.price);
+      console.log(cartCtx.totalCartPrice);
     }
   };
 

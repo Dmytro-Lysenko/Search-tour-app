@@ -6,15 +6,15 @@ import { CartContextProvider } from "../components/store/cart-context";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Layout>
-      <CartContextProvider>
+    <CartContextProvider>
+      <Layout>
         <AllTourContextProvider>
           <FavoriteContextProvider>
             <Component {...pageProps} />
           </FavoriteContextProvider>
         </AllTourContextProvider>
-      </CartContextProvider>
-    </Layout>
+      </Layout>
+    </CartContextProvider>
   );
 }
 

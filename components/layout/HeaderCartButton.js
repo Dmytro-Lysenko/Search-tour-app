@@ -5,15 +5,11 @@ import classes from "./HeaderCartButton.module.css";
 import CartContext from "../store/cart-context";
 
 const HeaderCartButton = (props) => {
-  const [number, setNumber] = useState(0);
+  // const [number, setNumber] = useState(0);
   const cartCtx = useContext(CartContext);
+  const numberOfTours = cartCtx.cartTours.length
 
-  useEffect(() => {
-    setNumber(cartCtx.totlaCartTours);
-  }, [cartCtx.totlaCartTours,cartCtx.cartTours]);
-
-  console.log(cartCtx.totlaCartTours);
-  console.log(cartCtx.cartTours.length);
+  console.log(cartCtx.cartPrices.length);
 
   // const numberOfCartItems = cartContext.tours.reduce((curNum, item) => {
   //   return curNum + item.amount;
@@ -32,7 +28,7 @@ const HeaderCartButton = (props) => {
           <CartIcon />
         </span>
         <span className={classes.cart}>Cart</span>
-        <span className={classes.badge}>{cartCtx.cartTours.length}</span>
+        <span className={classes.badge}>{numberOfTours}</span>
       </button>
     </li>
   );

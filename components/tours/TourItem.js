@@ -34,11 +34,14 @@ function TourItem(props) {
   const addToCartHandler = () => {
     if (isInCart) {
       cartCtx.deleteTourFromCart(props.id);
+      cartCtx.delFromPrices(+props.price);
     } else {
       cartCtx.addTourToCart(props);
+      cartCtx.addToPrices(+props.price);
     }
   };
 
+  console.log(cartCtx.cartPrices.length);
   return (
     <li className={classes.item}>
       <Card>
