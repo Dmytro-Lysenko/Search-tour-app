@@ -8,6 +8,7 @@ const Favorites = () => {
   const favoriteCtx = useContext(FavoriteContext);
   const favoriteTours = favoriteCtx.favoriteTours;
 
+
   const noTours = (
     <h1 style={{ textAlign: "center" }}>There are no favorite tours</h1>
   );

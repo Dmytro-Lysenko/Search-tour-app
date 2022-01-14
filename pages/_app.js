@@ -7,13 +7,13 @@ import { CartContextProvider } from "../components/store/cart-context";
 function MyApp({ Component, pageProps }) {
   return (
     <CartContextProvider>
-      <Layout>
-        <AllTourContextProvider>
-          <FavoriteContextProvider>
+      <AllTourContextProvider>
+        <FavoriteContextProvider>
+          <Layout>
             <Component {...pageProps} />
-          </FavoriteContextProvider>
-        </AllTourContextProvider>
-      </Layout>
+          </Layout>
+        </FavoriteContextProvider>
+      </AllTourContextProvider>
     </CartContextProvider>
   );
 }

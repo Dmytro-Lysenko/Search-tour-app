@@ -5,6 +5,7 @@ import NewTourForm from "../../components/tours/NewTourForm";
 
 const NewTour = () => {
   const router = useRouter();
+  
 
   async function addTourHandler(enteredTour) {
     const response = await fetch("/api/new-tour", {

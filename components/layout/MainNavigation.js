@@ -18,11 +18,12 @@ function MainNavigation(props) {
           <li>
             <Link href="/favorites">Favorites</Link>
           </li>
-
           <HeaderCartButton />
-
           <li>
             <Link href="/new-tour">Add New Tour</Link>
+          </li>
+          <li>
+            <Link href="/booked-tours">Booked tours</Link>
           </li>
         </ul>
       </nav>

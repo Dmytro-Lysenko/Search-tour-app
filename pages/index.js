@@ -5,18 +5,40 @@ import { MongoClient } from "mongodb";
 import TourList from "../components/tours/TourList";
 import AllTourContext from "../components/store/allTours-context";
 import CartProvider from "../components/store/CartProvider";
-import { Fragment, useContext, useState } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import SearchForm from "../components/search/SearchForm";
 
 const HomePage = (props) => {
   const allToursCtx = useContext(AllTourContext);
-  allToursCtx.allTours = props.tours;
-  const [allTours, setAllTours] = useState(allToursCtx.allTours);
- 
+
+  const [allTours, setAllTours] = useState(props.tours);
+  const [sortedTours, setSortedTours] = useState([]);
+  console.log(allToursCtx.allTours);
+
+  console.log(sortedTours.length);
+  // useEffect(() => {
+  //   setAllTours(props.tours);
+  // }, [props.tours]);
 
   const sortHandler = (input) => {
-    allToursCtx.allTours = input;
-    allToursCtx.setTours(input);
+    allToursCtx.setTours(props.tours);
+    allToursCtx.setTours(props.tours.filter((tour) => tour.country === input));
+    setSortedTours(props.tours.filter((tour) => tour.country === input));
+    console.log(allToursCtx.allTours);
+    if (input === "") {
+      allToursCtx.setTours(props.tours);
+    }
+    // const tours = [...allTours];
+    // tours.filter((tour) => {
+    //   if (tour.country === input) {
+    //     const filtredTours = tour;
+    //     console.log(filtredTours);
+    //     setAllTours(filtredTours);
+    //     console.log(allTours);
+    //   }
+    // });
+
+    allToursCtx.searchTours(input);
   };
 
   return (
@@ -31,7 +53,11 @@ const HomePage = (props) => {
         />
       </Head>
       <SearchForm onInput={sortHandler} tours={allTours} />
-      <TourList tours={allTours} />
+      {sortedTours.length === 0 ? (
+        <TourList tours={props.tours} />
+      ) : (
+        <TourList tours={sortedTours} />
+      )}
     </Fragment>
 
     // </CartProvider>
