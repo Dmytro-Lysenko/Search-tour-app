@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 
 import Card from "../ui/Card";
 import classes from "./NewTourForm.module.css";
@@ -10,6 +10,10 @@ function NewTourForm(props) {
   const photoInputRef = useRef();
   const descriptionInputRef = useRef();
   const priceInputRef = useRef();
+
+  useEffect(() => {
+    titleInputRef.current.focus();
+  }, []);
 
   function submitHandler(event) {
     event.preventDefault();

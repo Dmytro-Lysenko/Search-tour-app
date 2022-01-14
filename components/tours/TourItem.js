@@ -36,12 +36,16 @@ function TourItem(props) {
       cartCtx.deleteTourFromCart(props.id);
       cartCtx.delFromPrices(+props.price);
     } else {
-      cartCtx.addTourToCart(props);
+      const updatedTour = {
+        ...props,
+        tourist: 1,
+        priceForAllTourist: +props.price,
+      };
+      cartCtx.addTourToCart(updatedTour);
       cartCtx.addToPrices(+props.price);
     }
   };
 
-  console.log(cartCtx.cartPrices.length);
   return (
     <li className={classes.item}>
       <Card>

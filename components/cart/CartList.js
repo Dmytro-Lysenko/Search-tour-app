@@ -1,10 +1,11 @@
 import CartTour from "./CartTour";
 import CartContext from "../store/cart-context";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import BookTourModal from "../ui/BookTourModel";
 
 const CartList = (props) => {
-  console.log(props.tours);
   const cartCtx = useContext(CartContext);
+  const [bookTour, setBookTour] = useState(false);
 
   // const test = [
   //   { id: "2", price: 230 },
@@ -19,7 +20,7 @@ const CartList = (props) => {
   // const po = [230, 450, 44, 334, 22, 450];
   // console.log(po);
   // const y = po.filter((num) => num !== 450);
- 
+
   // const s = po.indexOf(450);
   // if (s !== -1) {
   //   po.splice(s, 1);
@@ -32,6 +33,14 @@ const CartList = (props) => {
   }
   const clearCartHandler = () => {
     cartCtx.clearCart();
+  };
+
+  const bookToursHandler = () => {
+    setBookTour(true);
+  };
+
+  const closeBookOrderModalHandler = () => {
+    setBookTour(false);
   };
 
   return (
@@ -55,7 +64,11 @@ const CartList = (props) => {
         }}
       >
         <h1>Total: {cartCtx.totalCartPrice}$</h1>
-        <button onClick={clearCartHandler}>Clear the cart</button>
+        <div>
+          <button onClick={clearCartHandler}>Clear the cart</button>
+          <button onClick={bookToursHandler}>Book tours</button>
+          {bookTour && <BookTourModal onClose={closeBookOrderModalHandler} />}
+        </div>
       </div>
     </div>
   );

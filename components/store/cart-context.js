@@ -4,6 +4,8 @@ const CartContext = createContext({
   cartTours: [],
   totlaCartTours: 0,
   cartPrices: [],
+  increaseTourist: (tourId) => {},
+  decreaseTourist: (tourId) => {},
   addToPrices: (price) => {},
   delFromPrices: (price) => {},
   totalCartPrice: 0,
@@ -46,14 +48,12 @@ export const CartContextProvider = (props) => {
     setTotalPrices((prev) => {
       return [...prev, priceTour];
     });
-    console.log(totalPrices);
   };
 
   const addToCartPrices = (price) => {
     setCartPrices((prevPrice) => {
       return [...prevPrice, price];
     });
-    console.log(price, cartPrices);
   };
 
   const delFromCartPrices = (price) => {
@@ -61,8 +61,27 @@ export const CartContextProvider = (props) => {
     if (indexPrice !== -1) {
       setTotalPrices(cartPrices.splice(indexPrice, 1));
     }
+  };
 
-    console.log("context cartprices", cartPrices);
+  const increaseTouristHandler = (tourId) => {
+    // const filteredTour = toursInCart.filter(tour => tour.id === tourId)
+    toursInCart.map((tour) => {
+      if (tour.id === tourId) {
+        tour.tourist += 1;
+        tour.priceForAllTourist = +tour.price + tour.priceForAllTourist;
+        return tour;
+      }
+    });
+    // console.log(filteredTour);
+  };
+  const decreaseTouristHandler = (tourId) => {
+    toursInCart.map((tour) => {
+      if (tour.id === tourId) {
+        tour.tourist -= 1;
+        tour.priceForAllTourist = tour.priceForAllTourist - +tour.price;
+        return tour;
+      }
+    });
   };
 
   const context = {
@@ -70,6 +89,8 @@ export const CartContextProvider = (props) => {
     totlaCartTours: toursInCart.length,
     totalCartPrice: totalPrice,
     cartPrices: cartPrices,
+    increaseTourist: increaseTouristHandler,
+    decreaseTourist: decreaseTouristHandler,
     addToPrices: addToCartPrices,
     delFromPrices: delFromCartPrices,
     addToTotalPrices: addToTotalPricesHandler,

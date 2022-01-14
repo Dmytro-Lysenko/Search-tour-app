@@ -9,8 +9,6 @@ const HeaderCartButton = (props) => {
   const cartCtx = useContext(CartContext);
   const numberOfTours = cartCtx.cartTours.length
 
-  console.log(cartCtx.cartPrices.length);
-
   // const numberOfCartItems = cartContext.tours.reduce((curNum, item) => {
   //   return curNum + item.amount;
   // }, 0);
