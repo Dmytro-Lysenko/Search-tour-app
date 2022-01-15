@@ -53,16 +53,16 @@ function TourItem(props) {
           <img src={props.photo} alt={props.title} />
         </div>
         <div className={classes.content}>
-          <h3>{props.title}</h3>
-          <h2>{props.country}</h2>
-          <h1>{props.price}$</h1>
-          <h1>{props.date}</h1>
+          <h3>Title: {props.title}</h3>
+          <h2>Country: {props.country}</h2>
+          <h1>Price: {props.price}$</h1>
+          <h1>Date: {props.date}</h1>
           <p>
             {readMore
               ? props.description
               : `${props.description.substring(0, 128)}...`}
             <button
-              className={classes.buttonRead}
+              className={classes['read-more']}
               onClick={toogleReadMoreHandler}
             >
               {!readMore ? " read more" : " hide"}

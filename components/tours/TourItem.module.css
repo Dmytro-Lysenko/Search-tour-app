@@ -12,32 +12,54 @@
 
 .image img {
   width: 100%;
+  /* min-height: 232px; */
   object-fit: cover;
 }
 
 .content {
   text-align: center;
-  padding: 1rem;
 }
 
-.content h3 {
+.content h3,
+.content h2,
+.content h1 {
   font-size: 1rem;
   color: #2c292b;
 }
 
+.content p {
+  font-size: 0.9rem;
+  color: #2c292b;
+  padding: 0 1rem;
+}
+
+.read-more {
+  border: none;
+  background: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #77002e;
+}
+
+.read-more:hover,
+.read-more:active {
+  cursor: pointer;
+  color: #965c73;
+}
+
 .actions {
-  padding: 1.2rem;
   text-align: center;
 }
 
 .actions button {
-  font: inherit;
+  font-size: 1rem;
   cursor: pointer;
   color: #77002e;
   border: 1px solid #77002e;
   background-color: transparent;
-  padding: 0.5rem 1.5rem;
+  padding: 0.4rem 1.1rem;
   border-radius: 4px;
+  margin: 0.8rem;
 }
 
 .actions button:hover,

@@ -1,13 +1,13 @@
-import MainNavigation from './MainNavigation';
-import classes from './Layout.module.css';
+import classes from "./Layout.module.css";
+import Header from "./header/Header";
 
 function Layout(props) {
   return (
     <div>
-      <MainNavigation />
+      <Header />
       <main className={classes.main}>{props.children}</main>
     </div>
-  )
+  );
 }
 
 export default Layout;

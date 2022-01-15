@@ -14,26 +14,12 @@ export const AllTourContextProvider = (props) => {
     setAllTours(tours);
   };
 
-  const searchHandler = (name) => {
-    console.log(allTours.filter((tour) => tour.country === name));
-    // setAllTours((prev) => {
-    //   return (prev = allTours.filter((tour) => tour.country === name));
+  const searchHandler = (price) => {
+    // const y = allTours.sort(function (a, b) {
+    //   return a.price - b.price;
     // });
-    // const tours = [...allTours];
-    // tours.filter((tour) => {
-    //   if (tour.country === name) {
-    //     const filtredTours = tour;
-    //     console.log(filtredTours);
-    //     return filtredTours;
-
-    //     // setAllTours(filtredTours);
-    //     // console.log(allTours);
-    //   } else {
-    //     setAllTours([]);
-    //   }
-    //   setAllTours(filtredTours);
-    // console.log(allTours);
-    // });
+    // setAllTours(y);
+    // console.log("click", allTours);
   };
 
   const context = {
