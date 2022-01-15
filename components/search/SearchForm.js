@@ -110,7 +110,7 @@ const SearchForm = (props) => {
   return (
     <form onSubmit={submitHandler}>
       <label htmlFor="search">
-        Search tour by country : 
+        Search tour by country or title 
         {/* <select ref={inputRef} onChange={changeHandler}>
           <option>Date</option>
           <option>Country</option>

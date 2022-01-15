@@ -13,18 +13,35 @@ const HomePage = (props) => {
 
   const [allTours, setAllTours] = useState(props.tours);
   const [sortedTours, setSortedTours] = useState([]);
-  console.log(allToursCtx.allTours);
+  // console.log(allToursCtx.allTours);
 
-  console.log(sortedTours.length);
+  // console.log(sortedTours.length);
   // useEffect(() => {
   //   setAllTours(props.tours);
   // }, [props.tours]);
 
   const sortHandler = (input) => {
     allToursCtx.setTours(props.tours);
-    allToursCtx.setTours(props.tours.filter((tour) => tour.country === input));
-    setSortedTours(props.tours.filter((tour) => tour.country === input));
-    console.log(allToursCtx.allTours);
+    // allToursCtx.setTours(props.tours.filter((tour) => tour.country === input));
+    setSortedTours(
+      props.tours.filter((tour) => {
+        if (tour.title.includes(input)) {
+          return tour;
+        }
+        if (tour.country.includes(input)) {
+          return tour;
+        }
+      })
+    );
+
+    // const updTours = [];
+    // props.tours.map((tour) => {
+    //   if ((tour.title === input  || props.country === input)) {
+    //     console.log(tour);
+    //   }
+    // });
+
+    // console.log(allToursCtx.allTours);
     if (input === "") {
       allToursCtx.setTours(props.tours);
     }

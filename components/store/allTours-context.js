@@ -32,7 +32,7 @@ export const AllTourContextProvider = (props) => {
     //     setAllTours([]);
     //   }
     //   setAllTours(filtredTours);
-    console.log(allTours);
+    // console.log(allTours);
     // });
   };
 
