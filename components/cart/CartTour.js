@@ -78,7 +78,10 @@ const CartTour = (props) => {
           </span>
         </h1>
         <h1>Total: {total}</h1>
-        <button onClick={() => deleteFromCartHandler(props.id)}>
+        <button
+          className={classes.actions}
+          onClick={() => deleteFromCartHandler(props.id)}
+        >
           Delete from cart
         </button>
       </div>

@@ -13,13 +13,15 @@ function TourDetail(props) {
     <Card>
       <div className={classes.image}>
         <img src={props.photo} alt={props.title} />
+        <h1>Title: {props.title}</h1>
+        <h1>Country: {props.country}</h1>
+        <h1>Price: {props.price}$</h1>
+        <h1>Date: {props.date}</h1>
+        <p>{props.description}</p>
+        <button className={classes.actions} onClick={backHandler}>
+          Go back
+        </button>
       </div>
-      <h1>Title: {props.title}</h1>
-      <h2>Country: {props.country}</h2>
-      <h3>Price: {props.price}$</h3>
-      <h1>Date: {props.date}</h1>
-      <p>{props.description}</p>
-      <button onClick={backHandler}>Go back</button>
     </Card>
   );
 }

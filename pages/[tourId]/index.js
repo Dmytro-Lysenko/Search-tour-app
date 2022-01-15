@@ -12,7 +12,7 @@ const TourDetails = (props) => {
       </Head>
       <TourDetail
         title={props.tourData.title}
-        country={props.tourData.title}
+        country={props.tourData.country}
         date={props.tourData.date}
         photo={props.tourData.photo}
         price={props.tourData.price}

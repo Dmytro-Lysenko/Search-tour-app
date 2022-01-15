@@ -11,6 +11,7 @@
   flex: 3;
   padding: 0;
   justify-content: space-between;
+  align-items: center;
 }
 
 .main-nav li {
@@ -84,6 +85,7 @@
 
   .main-nav li:hover {
     background-color: darkslategray;
+    color: #fff;
   }
 
   .logo-section li {
@@ -94,7 +96,11 @@
     display: unset;
   }
 
-  .cart {
+  .icons:hover {
+    cursor: pointer;
+  }
+
+  .main-nav li:nth-child(5) {
     display: none;
   }
 

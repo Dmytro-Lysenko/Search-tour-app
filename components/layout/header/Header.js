@@ -34,9 +34,10 @@ function Header() {
             <FaIcons.FaShoppingCart className={classes.icons} />
             <Link href="/cart">Cart</Link>
           </li>
-          <li className={classes.cart}>
+          {/* <li className={classes.cart}>
             <HeaderCartButton />
-          </li>
+          </li> */}
+          <HeaderCartButton />
           <li>
             <IoIcons.IoIosAddCircleOutline className={classes.icons} />
             <Link href="/new-tour">Add tour</Link>
