@@ -8,6 +8,7 @@ import classes from "./TourItem.module.css";
 
 function TourItem(props) {
   const [readMore, setReadMore] = useState(false);
+
   const router = useRouter();
   const favoritesCtx = useContext(FavoriteContext);
   const cartCtx = useContext(CartContext);
@@ -23,7 +24,6 @@ function TourItem(props) {
   };
 
   const addToFavorite = () => {
-    // favoritesCtx.addToFavTours();
     if (isFavorite) {
       favoritesCtx.deleteFromFavoritesTours(props.id);
     } else {
@@ -62,7 +62,7 @@ function TourItem(props) {
               ? props.description
               : `${props.description.substring(0, 128)}...`}
             <button
-              className={classes['read-more']}
+              className={classes["read-more"]}
               onClick={toogleReadMoreHandler}
             >
               {!readMore ? " read more" : " hide"}

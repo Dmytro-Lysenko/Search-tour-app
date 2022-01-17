@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import * as FaIcons from "react-icons/fa";
 import * as IoIcons from "react-icons/io";
 import * as AiIcons from "react-icons/ai";
@@ -8,9 +8,13 @@ import { IconContext } from "react-icons";
 import HeaderCartButton from "../HeaderCartButton";
 import CartIcon from "../../ui/CartIcon";
 import classes from "./Header.module.css";
+import AddModal from "../AddModal";
+import FavoriteContext from "../../store/favorites-context";
 
 function Header() {
   const [sideBar, setSideBar] = useState(false);
+  const favCtx = useContext(FavoriteContext);
+  console.log(favCtx.message);
 
   const shoSideBarHandler = () => setSideBar(!sideBar);
   const navClass = `${classes["main-nav"]} ${sideBar ? " " : classes.active} `;
@@ -57,6 +61,7 @@ function Header() {
           </li>
         </div>
       </nav>
+      <AddModal message={favCtx.message} />
     </div>
   );
 }

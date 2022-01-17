@@ -1,0 +1,48 @@
+.card {
+  max-width: 40rem;
+  padding: 0.6rem;
+  background-color: darkcyan;
+  position: fixed;
+  top: 50px;
+  left: 40%;
+  z-index: -1;
+  transition: 900ms;
+  border-radius: 6px;
+  margin: 0 auto;
+}
+
+.active {
+  top: 100px;
+  transition: ease-in-out 900ms;
+  background-color: darkcyan;
+}
+
+.card h1 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+
+.bump {
+  animation: bump 900ms ease-out;
+}
+
+@keyframes bump {
+  0% {
+    transform: translateX(100px);
+    z-index: -1;
+  }
+  10% {
+    transform: translateX(130px);
+  }
+  30% {
+    transform: translateX(170px);
+  }
+  50% {
+    transform: translateX(200px);
+  }
+  100% {
+    transform: translateX(250px);
+  }
+}
