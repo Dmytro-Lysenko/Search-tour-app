@@ -5,9 +5,24 @@ import classes from "./HeaderCartButton.module.css";
 import CartContext from "../store/cart-context";
 
 const HeaderCartButton = (props) => {
-  // const [number, setNumber] = useState(0);
+  const [isHighLighted, setIsHighLighted] = useState(false);
   const cartCtx = useContext(CartContext);
-  const numberOfTours = cartCtx.cartTours.length
+  const numberOfTours = cartCtx.cartTours.length;
+
+  useEffect(() => {
+    if (cartCtx.cartTours.length === 0) {
+      return;
+    }
+    setIsHighLighted(true);
+
+    const timer = setTimeout(() => {
+      setIsHighLighted(false);
+    }, 300);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [cartCtx.cartTours.length]);
 
   // const numberOfCartItems = cartContext.tours.reduce((curNum, item) => {
   //   return curNum + item.amount;
@@ -19,9 +34,11 @@ const HeaderCartButton = (props) => {
     router.push("/cart");
   };
 
+  const btnClasses = `${classes.button} ${isHighLighted ? classes.bump : " "}`;
+
   return (
     <li>
-      <button onClick={headerCartHandler} className={classes.button}>
+      <button onClick={headerCartHandler} className={btnClasses}>
         <span className={classes.icon}>
           <CartIcon />
         </span>
