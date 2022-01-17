@@ -21,7 +21,7 @@ export const FavoriteContextProvider = (props) => {
   };
 
   const deleteHandler = (tourId) => {
-    setMessage("You have deleted tour to favorites!");
+    setMessage("You have deleted tour from favorites!");
     setFavoritesTours((prevTours) => {
       return prevTours.filter((tour) => tour.id !== tourId);
     });
