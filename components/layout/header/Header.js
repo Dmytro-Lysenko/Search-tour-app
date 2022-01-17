@@ -13,7 +13,7 @@ import FavoriteContext from "../../store/favorites-context";
 import CartContext from "../../store/cart-context";
 
 function Header() {
-  const [sideBar, setSideBar] = useState(false);
+  const [sideBar, setSideBar] = useState(true);
   const favCtx = useContext(FavoriteContext);
   const cartCtx = useContext(CartContext);
   const [showCart, setShowCart] = useState();
@@ -37,14 +37,6 @@ function Header() {
       setShowFavorites(true);
       setShowCart(false);
     }
-
-    // if (cartCtx.message === "You have deleted tour from cart!") {
-    //   setShowCart(false);
-    // }
-
-    // if (cartCtx.message === "You have added tour to cart!") {
-    //   setShowCart(true);
-    // }
   }, [cartCtx.message, favCtx.message]);
 
   const shoSideBarHandler = () => setSideBar(!sideBar);

@@ -28,21 +28,35 @@
   animation: bump 900ms ease-out;
 }
 
-@keyframes bump {
+@keyframes active {
   0% {
-    transform: translateX(100px);
     z-index: -1;
   }
-  10% {
-    transform: translateX(130px);
-  }
-  30% {
-    transform: translateX(170px);
-  }
-  50% {
-    transform: translateX(200px);
+  70% {
+    z-index: 0;
   }
   100% {
-    transform: translateX(250px);
+    z-index: 1;
+  }
+}
+
+@media (max-width: 720px) {
+  .card {
+    max-width: 90%;
+    padding: 0.6rem;
+    background-color: darkcyan;
+    position: fixed;
+    top: 0;
+    left: 3%;
+    z-index: -1;
+    transition: 900ms;
+    border-radius: 6px;
+    margin: 0 auto;
+  }
+
+  .active {
+    top: 50px;
+    transition: ease-in-out 900ms;
+    background-color: darkcyan;
   }
 }

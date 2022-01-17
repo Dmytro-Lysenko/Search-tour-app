@@ -6,6 +6,7 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.5rem;
+  margin-top: 7rem;
 }
 
 .form label {
@@ -19,4 +20,10 @@
   border: 2px solid #ccc;
   padding: 0.25rem;
   margin-left: 1rem;
+}
+
+@media (max-width: 800px) {
+  .form {
+    margin-top: 4.3rem;
+  }
 }
