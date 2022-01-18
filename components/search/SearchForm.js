@@ -24,6 +24,19 @@ const SearchForm = (props) => {
     event.preventDefault();
   };
 
+  // props.tours.sort((a, b) => {
+  //   {
+  //     if (a.price > b.price) {
+  //       return 1;
+  //     }
+  //     if (a.price < b.price) {
+  //       return -1;
+  //     }
+  //     // a must be equel to 0
+  //     return 0;
+  //   }
+  // })
+
   const changeHandler = () => {
     const enteredSelect = inputRef.current.value;
     props.onInput(enteredSelect);

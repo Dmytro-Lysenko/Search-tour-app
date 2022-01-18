@@ -12,6 +12,7 @@ const FavoriteContext = createContext({
 export const FavoriteContextProvider = (props) => {
   const [favoritesTours, setFavoritesTours] = useState([]);
   const [message, setMessage] = useState("");
+  // const [favorites, setFavorites] = useState(false);
 
   const addHandler = (tour) => {
     setMessage("You have added tour to favorites!");
@@ -30,6 +31,10 @@ export const FavoriteContextProvider = (props) => {
   const isFavoriteHandler = (tourId) => {
     return favoritesTours.some((tour) => tour.id === tourId);
   };
+
+  // const isFavHandler = (tour) => {
+
+  // };
 
   const context = {
     favoriteTours: favoritesTours,

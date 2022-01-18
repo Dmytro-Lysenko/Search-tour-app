@@ -35,7 +35,7 @@ export async function getStaticProps() {
 
   console.log(tours._id);
   client.close();
-  console.log(tours._id);
+  // console.log(tours._id);
   // console.log(tours._id);
 
   // console.log(tours.slice(-1));
@@ -43,7 +43,7 @@ export async function getStaticProps() {
   return {
     props: {
       tours: tours.map((tour) => tour[0]),
-      id: 333,
+      // id: 333,
     },
     revalidate: 3,
   };

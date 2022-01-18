@@ -16,7 +16,7 @@ function AddModal(props) {
       });
       const timer = setTimeout(() => {
         setIsShown(false);
-      }, 21500);
+      }, 1500);
     }
 
     return () => {

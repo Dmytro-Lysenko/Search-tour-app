@@ -1,10 +1,10 @@
 .card {
-  max-width: 40rem;
+  width: 100%;
   padding: 0.6rem;
   background-color: darkcyan;
   position: fixed;
   top: 50px;
-  left: 40%;
+  left: 0;
   z-index: -1;
   transition: 900ms;
   border-radius: 6px;
@@ -22,13 +22,14 @@
   font-weight: bold;
   margin: 0;
   padding: 0;
+  text-align: center;
 }
 
 .bump {
   animation: bump 900ms ease-out;
 }
 
-@keyframes active {
+/* @keyframes active {
   0% {
     z-index: -1;
   }
@@ -38,16 +39,22 @@
   100% {
     z-index: 1;
   }
-}
+  50% {
+    z-index: 0;
+  }
+  50% {
+    z-index: -1;
+  }
+} */
 
 @media (max-width: 720px) {
   .card {
-    max-width: 90%;
+    width: 100%;
     padding: 0.6rem;
     background-color: darkcyan;
     position: fixed;
     top: 0;
-    left: 3%;
+    left: 0;
     z-index: -1;
     transition: 900ms;
     border-radius: 6px;

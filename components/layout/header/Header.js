@@ -18,8 +18,6 @@ function Header() {
   const cartCtx = useContext(CartContext);
   const [showCart, setShowCart] = useState();
   const [showFavorites, setShowFavorites] = useState();
-  console.log(cartCtx.message);
-  console.log(cartCtx.message);
 
   useEffect(() => {
     if (
@@ -84,6 +82,8 @@ function Header() {
           </li>
         </div>
       </nav>
+      {/* <AddModal message={favCtx.message} />
+      <AddModal message={cartCtx.message} /> */}
       {showFavorites === true && <AddModal message={favCtx.message} />}
       {showCart === true && <AddModal message={cartCtx.message} />}
     </div>

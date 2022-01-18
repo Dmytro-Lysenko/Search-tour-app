@@ -5,6 +5,7 @@ const CartContext = createContext({
   totlaCartTours: 0,
   cartPrices: [],
   message: "",
+  cart: false,
   increaseTourist: (tourId) => {},
   decreaseTourist: (tourId) => {},
   addToPrices: (price) => {},
@@ -22,9 +23,11 @@ export const CartContextProvider = (props) => {
   const [totalPrices, setTotalPrices] = useState([]);
   const [cartPrices, setCartPrices] = useState([]);
   const [message, setMessage] = useState("");
+  const [cart, setCart] = useState(false);
 
   const addHandler = (tour) => {
     setMessage("You have added tour to cart!");
+    console.log(tour);
     setToursInCart((prevTours) => {
       return [...prevTours, tour];
     });
@@ -94,6 +97,7 @@ export const CartContextProvider = (props) => {
     totalCartPrice: totalPrice,
     cartPrices: cartPrices,
     message: message,
+    cart: cart,
     increaseTourist: increaseTouristHandler,
     decreaseTourist: decreaseTouristHandler,
     addToPrices: addToCartPrices,
