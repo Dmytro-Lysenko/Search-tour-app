@@ -13,14 +13,14 @@
   .error-modal h2 {
     margin: 0;
     padding: 1rem;
-    background: #ff2058;
+    background: #77002e;
     color: white;
     border-radius: 7px 7px 0 0;
   }
   
-  .error-modal p {
+  /* .error-modal p {
     padding: 1rem;
-  }
+  } */
   
   .error-modal__actions {
     display: flex;

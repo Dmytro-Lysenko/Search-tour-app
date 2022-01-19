@@ -10,7 +10,6 @@ function TourItem(props) {
   const [readMore, setReadMore] = useState(false);
   // const [readMore, setReadMore] = useState(false);
 
-
   const router = useRouter();
   const favoritesCtx = useContext(FavoriteContext);
   const cartCtx = useContext(CartContext);
@@ -48,9 +47,6 @@ function TourItem(props) {
     }
   };
   // console.log(favoritesCtx.favoriteTours);
-  const add = (props) => {
-    console.log(props);
-  };
 
   return (
     <li className={classes.item}>
@@ -79,16 +75,10 @@ function TourItem(props) {
           <button onClick={showDetailsHandler}>Show Details</button>
         </div>
         <div className={classes.actions}>
-          {/* <button onClick={() => addToFavorite(props)}>
+          <button onClick={() => addToFavorite(props)}>
             {!isFavorite ? "Add to favorite" : "Del from favorites"}
           </button>
           <button onClick={() => addToCartHandler(props)}>
-            {!isInCart ? "Add to cart" : "Delete from cart"}
-          </button> */}
-          <button onClick={() => add(props)}>
-            {!isFavorite ? "Add to favorite" : "Del from favorites"}
-          </button>
-          <button onClick={() => add(props)}>
             {!isInCart ? "Add to cart" : "Delete from cart"}
           </button>
         </div>

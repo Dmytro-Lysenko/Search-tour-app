@@ -12,7 +12,7 @@
 
 .image img {
   width: 100%;
-  /* min-height: 232px; */
+  min-height: 232px;
   object-fit: cover;
 }
 

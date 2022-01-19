@@ -1,0 +1,22 @@
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.actions button {
+  font-size: 1rem;
+  cursor: pointer;
+  color: #77002e;
+  border: 1px solid #77002e;
+  background-color: #ffffff;
+  padding: 0.4rem 1.1rem;
+  border-radius: 4px;
+  display: flex;
+  margin: 0 1rem;
+}
+
+.actions button:hover,
+.actions button:active {
+  cursor: pointer;
+  background-color: #ffe2ed;
+}

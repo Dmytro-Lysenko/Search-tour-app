@@ -18,6 +18,11 @@ function Header() {
   const cartCtx = useContext(CartContext);
   const [showCart, setShowCart] = useState();
   const [showFavorites, setShowFavorites] = useState();
+  const [theme, setTheme] = useState("light");
+
+  useEffect(() => {
+    document.body.setAttribute("data-theme", theme);
+  }, [theme]);
 
   useEffect(() => {
     if (
@@ -39,6 +44,10 @@ function Header() {
 
   const shoSideBarHandler = () => setSideBar(!sideBar);
   const navClass = `${classes["main-nav"]} ${sideBar ? " " : classes.active} `;
+
+  const toogleThemeHandler = (theme) => {
+    setTheme(theme);
+  };
 
   return (
     <div>
@@ -74,6 +83,22 @@ function Header() {
         </ul>
         <div className={classes["logo-section"]}>
           <h1>React Tours App</h1>
+
+          <div className={classes.theme}>
+            <div
+              className={classes["theme-icon"]}
+              onClick={() => toogleThemeHandler("dark")}
+            >
+              <FaIcons.FaMoon />
+            </div>
+            <div
+              className={classes["theme-icon"]}
+              onClick={() => toogleThemeHandler("light")}
+            >
+              <FaIcons.FaSun />
+            </div>
+          </div>
+
           <li>
             <FaIcons.FaBars
               className={classes.icons}

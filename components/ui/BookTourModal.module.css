@@ -26,8 +26,9 @@
 }
 
 .tour {
-  background-color: #9f0a2d;
-  border: 2px #6e6c6c solid;
+  background: #ed9d7d;
+  border-radius: 6px;
+  border: 2px #9f0a2d solid;
   margin: 1rem;
   padding: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);

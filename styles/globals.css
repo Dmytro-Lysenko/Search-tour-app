@@ -11,6 +11,15 @@ a {
   text-decoration: none;
 }
 
+
+body[data-theme="dark"] {
+  background: #6b6868;
+}
+body[data-theme="light"] {
+  background: #bfcece;
+}
+
+
 * {
   box-sizing: border-box;
 }

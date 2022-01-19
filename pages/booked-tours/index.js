@@ -5,7 +5,6 @@ const BookedTours = (props) => {
   console.log(props);
   return (
     <div>
-      <h1>Booked tours</h1>
       {/* {props.tours.map((tour) =>
         tour.map((item) => {
           return (
@@ -33,17 +32,11 @@ export async function getStaticProps() {
 
   const tours = await bookedToursCollections.find().toArray();
 
-  console.log(tours._id);
   client.close();
-  // console.log(tours._id);
-  // console.log(tours._id);
-
-  // console.log(tours.slice(-1));
 
   return {
     props: {
-      tours: tours.map((tour) => tour[0]),
-      // id: 333,
+      tours: tours.map((tour, index) => tour[0]),
     },
     revalidate: 3,
   };

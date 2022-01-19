@@ -11,7 +11,9 @@ const Favorites = () => {
   const favoriteTours = favoriteCtx.favoriteTours;
 
   const noTours = (
-    <h1 style={{ textAlign: "center" }}>There are no favorite tours</h1>
+    <h1 style={{ textAlign: "center", color: "#77002e" }}>
+      There are no favorite tours
+    </h1>
   );
 
   return (

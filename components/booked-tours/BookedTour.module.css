@@ -1,0 +1,48 @@
+.order {
+  max-width: 35rem;
+  margin: 0 auto;
+  padding: 0 0 1rem 0;
+  background: #ed9d7d;
+  border-radius: 6px;
+}
+
+.title {
+  color: #77002e;
+  text-align: center;
+  padding-top: 0.5rem;
+}
+
+.container {
+  display: flex;
+  max-width: 30rem;
+  margin: 1rem auto;
+  background: #ed9d7d;
+  padding: 0;
+  border: 2px solid #77002e;
+  border-radius: 6px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-width: 13rem;
+  padding: 0.6rem;
+}
+
+.content h1 {
+  font-size: 1rem;
+  padding: 0;
+  margin: 0.5rem;
+  color: #77002e;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+}
+
+.image img {
+  display: block;
+  width: 100%;
+}
