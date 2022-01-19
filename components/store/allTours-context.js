@@ -18,7 +18,9 @@ export const AllTourContextProvider = (props) => {
   };
 
   const addToPopularTourHandler = (tour) => {
-    console.log(tour);
+    if (popTours.map((tours) => tours.id.includes(tour.id))) {
+      console.log("item is in popular");
+    }
     setPopTours((prev) => {
       return [...prev, tour];
     });

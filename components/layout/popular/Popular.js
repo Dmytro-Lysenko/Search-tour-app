@@ -40,11 +40,11 @@ function Popular() {
         </div>
       </div>
       <div className={classes.content}>
-        <h1>{allCtx.popularTours[leng - 1].title}</h1>
+        <h1>{leng > 1 && allCtx.popularTours[leng - 1].title}</h1>
         <div className={classes.photo}>
           <img
-            src={allCtx.popularTours[leng - 1].photo}
-            alt={allCtx.popularTours[leng - 1].title}
+            src={leng > 1 && allCtx.popularTours[leng - 1].photo}
+            alt={leng > 1 && allCtx.popularTours[leng - 1].title}
           />
         </div>
       </div>

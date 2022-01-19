@@ -1,9 +1,9 @@
 .container {
   position: fixed;
   top: 20%;
-  right: -170px;
+  right: -180px;
   background: rgb(223, 146, 146);
-  width: 170px;
+  width: 18g0px;
   transition: 800ms ease-in-out;
   border-radius: 5px;
 }
