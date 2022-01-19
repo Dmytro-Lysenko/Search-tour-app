@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react/cjs/react.development";
+import * as FaIcons from "react-icons/fa";
 
 import classes from "./SortedTours.module.css";
 
@@ -50,9 +51,13 @@ function SortedTours(props) {
     }
     props.onSort(value);
   };
+  // FaArrowCircleLeft, FaArrowCircleRight;
 
   return (
     <div className={classes.container}>
+      {/* <button onClick={() => props.onClick(-1)}>
+        <FaIcons.FaArrowCircleLeft />
+      </button> */}
       <button className={stylesDate} onClick={() => sortHandler("date")}>
         By date
       </button>
@@ -62,6 +67,9 @@ function SortedTours(props) {
       <button className={stylesCountry} onClick={() => sortHandler("country")}>
         By country
       </button>
+      {/* <button onClick={() => props.onClick(+1)}>
+        <FaIcons.FaArrowCircleRight />
+      </button> */}
     </div>
   );
 }

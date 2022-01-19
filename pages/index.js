@@ -11,17 +11,8 @@ import SortedTours from "../components/sorted-tours/SortedTours";
 
 const HomePage = (props) => {
   const allToursCtx = useContext(AllTourContext);
-
   const [allTours, setAllTours] = useState(allToursCtx.allTours);
   const [sortedTours, setSortedTours] = useState(props.tours);
-
-  // // console.log(sortedTours.length);
-  // useEffect(() => {
-  //   allToursCtx.setTours(props.tours);
-  // }, []);
-  // useEffect(() => {
-  //   setSortedTours(sortedTours);
-  // }, [sortedTours]);
 
   const searchHandler = (input) => {
     console.log(input);
