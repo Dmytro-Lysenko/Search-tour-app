@@ -4,6 +4,7 @@ const FavoriteContext = createContext({
   favoriteTours: [],
   totalFavTours: 0,
   message: "",
+  isFav: false,
   addToFavTours: (tour) => {},
   deleteFromFavoritesTours: (tourId) => {},
   isFavorite: (tourId) => {},
@@ -12,7 +13,7 @@ const FavoriteContext = createContext({
 export const FavoriteContextProvider = (props) => {
   const [favoritesTours, setFavoritesTours] = useState([]);
   const [message, setMessage] = useState("");
-  // const [favorites, setFavorites] = useState(false);
+  const [isFav, setIsFav] = useState(false);
 
   const addHandler = (tour) => {
     setMessage("You have added tour to favorites!");
@@ -40,6 +41,7 @@ export const FavoriteContextProvider = (props) => {
     favoriteTours: favoritesTours,
     totalFavTours: favoritesTours.length,
     message: message,
+    isFav: isFav,
     addToFavTours: addHandler,
     deleteFromFavoritesTours: deleteHandler,
     isFavorite: isFavoriteHandler,

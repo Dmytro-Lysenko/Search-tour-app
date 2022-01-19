@@ -5,10 +5,11 @@ import CartContext from "../store/cart-context";
 
 import Card from "../ui/Card";
 import classes from "./TourItem.module.css";
+import AddModal from "../layout/AddModal";
 
 function TourItem(props) {
   const [readMore, setReadMore] = useState(false);
-  // const [readMore, setReadMore] = useState(false);
+  const [mes, setMes] = useState();
 
   const router = useRouter();
   const favoritesCtx = useContext(FavoriteContext);
@@ -25,17 +26,38 @@ function TourItem(props) {
   };
 
   const addToFavorite = () => {
-    if (isFavorite) {
-      favoritesCtx.deleteFromFavoritesTours(props.id);
-    } else {
-      favoritesCtx.addToFavTours(props);
-    }
+    // if (
+    //   !isFavorite
+    //     ? setMes("You have added tour to favorites!")
+    //     : setMes("You have deleted tour from favorites!")
+    // )
+      if (isFavorite) {
+        favoritesCtx.deleteFromFavoritesTours(props.id);
+        // if (props.id === props.id) {
+        //   console.log("test");
+          setMes("You have deleted tour from favorites!");
+        // }
+      } else {
+        // if (props.id === props.id) {
+        //   console.log("test");
+          setMes("You have added tour to favorites!");
+        // }
+        const updTour = {
+          ...props,
+          isFav: true,
+        };
+        favoritesCtx.addToFavTours(updTour);
+      }
   };
 
   const addToCartHandler = () => {
     if (isInCart) {
       cartCtx.deleteTourFromCart(props.id);
       cartCtx.delFromPrices(+props.price);
+      // if (props.id === props.id) {
+      //   console.log("test");
+        setMes("You have deleted tour from cart!");
+      // }
     } else {
       const updatedTour = {
         ...props,
@@ -44,6 +66,10 @@ function TourItem(props) {
       };
       cartCtx.addTourToCart(updatedTour);
       cartCtx.addToPrices(+props.price);
+      // if (props.id === props.id) {
+      //   console.log("test");
+        setMes("You have added tour to cart!");
+      // }
     }
   };
   // console.log(favoritesCtx.favoriteTours);
@@ -82,6 +108,7 @@ function TourItem(props) {
             {!isInCart ? "Add to cart" : "Delete from cart"}
           </button>
         </div>
+        <AddModal message={mes} />
       </Card>
     </li>
   );

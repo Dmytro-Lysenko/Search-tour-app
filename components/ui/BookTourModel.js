@@ -7,10 +7,6 @@ import SuccessModal from "./SuccessModal";
 const BookTourModal = (props) => {
   const cartCtx = useContext(CartContext);
   const [successOrder, setSuccessOrder] = useState(false);
-  const [item, setItem] = useState({
-    name: "Alinama",
-    age: 127,
-  });
 
   // async function buyToursHandler() {
   //   setSuccessOrder(true);
@@ -38,30 +34,7 @@ const BookTourModal = (props) => {
   async function buyToursHandler() {
     setSuccessOrder(true);
     const newOrder = cartCtx.cartTours;
-
-    const r = [
-      {
-        name: "Dima",
-        age: 17,
-      },
-      {
-        name: "ritaa",
-        age: 27,
-      },
-    ];
-    r.map((item) => {
-      setItem((prevItem) => {
-        return (prevItem = item);
-      });
-    });
-
-    // const y = {
-    //   ...r,
-    //   price: 400,
-    // };
-
-    // const l = r.map((item) => item);
-    // console.log(y);
+   
 
     const response = await fetch("/api/new-booked-tour", {
       method: "POST",
@@ -73,34 +46,7 @@ const BookTourModal = (props) => {
 
     const data = await response.json();
     console.log(data);
-
-    // const response = await fetch("/api/new-booked-tour", {
-    //   method: "POST",
-    //   body: JSON.stringify(test),
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // });
-
-    // const data = await response.json();
-
-    // console.log(data);
   }
-
-  // async function addTourHandler(enteredTour) {
-  //   const response = await fetch("/api/new-tour", {
-  //     method: "POST",
-  //     body: JSON.stringify(enteredTour),
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   });
-
-  //   const data = await response.json();
-
-  //   console.log(data);
-  //   router.push("/");
-  // }
 
   if (successOrder) {
     return <SuccessModal />;

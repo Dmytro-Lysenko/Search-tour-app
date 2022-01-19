@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import classes from "./AddModal.module.css";
 
 function AddModal(props) {
+  console.log(props.message);
   const [isShown, setIsShown] = useState(false);
 
   useEffect(() => {

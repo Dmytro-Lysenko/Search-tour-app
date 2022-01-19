@@ -24,23 +24,23 @@ function Header() {
     document.body.setAttribute("data-theme", theme);
   }, [theme]);
 
-  useEffect(() => {
-    if (
-      favCtx.message === "You have deleted tour from favorites!" &&
-      cartCtx.message === "You have added tour to cart!"
-    ) {
-      setShowFavorites(false);
-      setShowCart(true);
-    }
+  // useEffect(() => {
+  //   if (
+  //     favCtx.message === "You have deleted tour from favorites!" &&
+  //     cartCtx.message === "You have added tour to cart!"
+  //   ) {
+  //     setShowFavorites(false);
+  //     setShowCart(true);
+  //   }
 
-    if (
-      favCtx.message === "You have added tour to favorites!" &&
-      cartCtx.message === "You have deleted tour from cart!"
-    ) {
-      setShowFavorites(true);
-      setShowCart(false);
-    }
-  }, [cartCtx.message, favCtx.message]);
+  //   if (
+  //     favCtx.message === "You have added tour to favorites!" &&
+  //     cartCtx.message === "You have deleted tour from cart!"
+  //   ) {
+  //     setShowFavorites(true);
+  //     setShowCart(false);
+  //   }
+  // }, [cartCtx.message, favCtx.message]);
 
   const shoSideBarHandler = () => setSideBar(!sideBar);
   const navClass = `${classes["main-nav"]} ${sideBar ? " " : classes.active} `;
@@ -107,10 +107,9 @@ function Header() {
           </li>
         </div>
       </nav>
-      {/* <AddModal message={favCtx.message} />
-      <AddModal message={cartCtx.message} /> */}
-      {showFavorites === true && <AddModal message={favCtx.message} />}
-      {showCart === true && <AddModal message={cartCtx.message} />}
+      {/* <AddModal message={favCtx.message} /> */}
+      {/* {showFavorites === true && <AddModal message={favCtx.message} />}
+      {showCart === true && <AddModal message={cartCtx.message} />} */}
     </div>
   );
 }
