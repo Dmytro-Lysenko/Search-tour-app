@@ -1,0 +1,52 @@
+.container {
+  position: fixed;
+  top: 20%;
+  right: -170px;
+  background: rgb(223, 146, 146);
+  width: 170px;
+  transition: 800ms ease-in-out;
+  border-radius: 5px;
+}
+
+.title {
+  font-size: 1.2rem;
+  margin: 0.8rem;
+  text-align: center;
+}
+
+.active {
+  transition: 800ms ease-in-out;
+  right: 0;
+}
+
+.button {
+  font-size: 1.6rem;
+  cursor: pointer;
+  position: fixed;
+  top: 13%;
+  right: 2%;
+}
+
+.button:hover {
+  color: grey;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem;
+}
+
+.content h1 {
+  font-size: 0.8rem;
+  margin: 0.2rem;
+}
+
+.photo {
+  width: 5rem;
+}
+
+.photo img {
+  display: block;
+  width: 100%;
+}

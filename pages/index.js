@@ -8,6 +8,7 @@ import AllTourContext from "../components/store/allTours-context";
 import { Fragment, useContext, useEffect, useState } from "react";
 import SearchForm from "../components/search/SearchForm";
 import SortedTours from "../components/sorted-tours/SortedTours";
+import Popular from "../components/layout/popular/Popular";
 
 const HomePage = (props) => {
   const allToursCtx = useContext(AllTourContext);
@@ -94,6 +95,7 @@ const HomePage = (props) => {
       </Head>
 
       <SearchForm onInput={searchHandler} tours={allTours} />
+      <Popular />
       <div>
         <SortedTours onSort={searchHandler} />
         <TourList tours={sortedTours} />

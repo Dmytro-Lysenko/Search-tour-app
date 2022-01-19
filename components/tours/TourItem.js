@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { useState, useContext } from "react";
 import FavoriteContext from "../store/favorites-context";
 import CartContext from "../store/cart-context";
-
+import AllTourContext from "../store/allTours-context";
 import Card from "../ui/Card";
 import classes from "./TourItem.module.css";
 import AddModal from "../layout/AddModal";
@@ -12,13 +12,15 @@ function TourItem(props) {
   const [mes, setMes] = useState();
 
   const router = useRouter();
+  const allCtx = useContext(AllTourContext);
   const favoritesCtx = useContext(FavoriteContext);
   const cartCtx = useContext(CartContext);
   const isInCart = cartCtx.isInCart(props.id);
   const isFavorite = favoritesCtx.isFavorite(props.id);
 
-  function showDetailsHandler() {
-    router.push("/" + props.id);
+  function showDetailsHandler(tour) {
+    router.push("/" + tour.id);
+    allCtx.adToPopularTour(tour);
   }
 
   const toogleReadMoreHandler = () => {
@@ -31,23 +33,23 @@ function TourItem(props) {
     //     ? setMes("You have added tour to favorites!")
     //     : setMes("You have deleted tour from favorites!")
     // )
-      if (isFavorite) {
-        favoritesCtx.deleteFromFavoritesTours(props.id);
-        // if (props.id === props.id) {
-        //   console.log("test");
-          setMes("You have deleted tour from favorites!");
-        // }
-      } else {
-        // if (props.id === props.id) {
-        //   console.log("test");
-          setMes("You have added tour to favorites!");
-        // }
-        const updTour = {
-          ...props,
-          isFav: true,
-        };
-        favoritesCtx.addToFavTours(updTour);
-      }
+    if (isFavorite) {
+      favoritesCtx.deleteFromFavoritesTours(props.id);
+      // if (props.id === props.id) {
+      //   console.log("test");
+      setMes("You have deleted tour from favorites!");
+      // }
+    } else {
+      // if (props.id === props.id) {
+      //   console.log("test");
+      setMes("You have added tour to favorites!");
+      // }
+      const updTour = {
+        ...props,
+        isFav: true,
+      };
+      favoritesCtx.addToFavTours(updTour);
+    }
   };
 
   const addToCartHandler = () => {
@@ -56,7 +58,7 @@ function TourItem(props) {
       cartCtx.delFromPrices(+props.price);
       // if (props.id === props.id) {
       //   console.log("test");
-        setMes("You have deleted tour from cart!");
+      setMes("You have deleted tour from cart!");
       // }
     } else {
       const updatedTour = {
@@ -68,7 +70,7 @@ function TourItem(props) {
       cartCtx.addToPrices(+props.price);
       // if (props.id === props.id) {
       //   console.log("test");
-        setMes("You have added tour to cart!");
+      setMes("You have added tour to cart!");
       // }
     }
   };
@@ -98,7 +100,9 @@ function TourItem(props) {
           </p>
         </div>
         <div className={classes.actions}>
-          <button onClick={showDetailsHandler}>Show Details</button>
+          <button onClick={() => showDetailsHandler(props)}>
+            Show Details
+          </button>
         </div>
         <div className={classes.actions}>
           <button onClick={() => addToFavorite(props)}>
