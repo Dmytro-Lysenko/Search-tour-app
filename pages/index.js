@@ -100,7 +100,7 @@ const HomePage = (props) => {
           <SearchForm onInput={searchHandler} tours={sortedTours} />
           {/* <Popular /> */}
           <div>
-            <SortedTours onSort={searchHandler} />
+            {/* <SortedTours onSort={searchHandler} /> */}
             <TourList tours={sortedTours} />
           </div>
         </Fragment>
