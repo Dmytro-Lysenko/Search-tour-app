@@ -9,16 +9,16 @@ import { Fragment, useContext, useEffect, useState } from "react";
 import SearchForm from "../components/search/SearchForm";
 import SortedTours from "../components/sorted-tours/SortedTours";
 import Popular from "../components/layout/popular/Popular";
+import LoadingIndicator from "../components/ui/LoadingIndicator";
 
 const HomePage = (props) => {
+
   const allToursCtx = useContext(AllTourContext);
   const [allTours, setAllTours] = useState(allToursCtx.allTours);
   const [sortedTours, setSortedTours] = useState(props.tours);
 
   const searchHandler = (input) => {
-    console.log(input);
     let data = [...props.tours];
-    // allToursCtx.setTours(props.tours.filter((tour) => tour.country === input));
     setSortedTours(
       props.tours.filter((tour) => {
         if (tour.title.toLowerCase().includes(input.toLowerCase())) {
@@ -43,7 +43,6 @@ const HomePage = (props) => {
           return 0;
         }
       });
-      console.log(updDat);
       setSortedTours(updDat);
     }
 
@@ -56,11 +55,9 @@ const HomePage = (props) => {
           if (a.date < b.date) {
             return -1;
           }
-          // a must be equel to 0
           return 0;
         }
       });
-      console.log(updDat);
       setSortedTours(updDat);
     }
 
@@ -73,18 +70,14 @@ const HomePage = (props) => {
           if (a.country < b.country) {
             return -1;
           }
-          // a must be equel to 0
           return 0;
         }
       });
-      console.log(updData);
       setSortedTours(updData);
     }
   };
 
   return (
-    // <CartProvider>
-
     <Fragment>
       <Head>
         <title>Tours</title>
@@ -93,17 +86,11 @@ const HomePage = (props) => {
           content="Choose some nice tour to visit new country!"
         />
       </Head>
-
       <SearchForm onInput={searchHandler} tours={allTours} />
       <Popular />
       <div>
         <SortedTours onSort={searchHandler} />
         <TourList tours={sortedTours} />
-        {/* {sortedTours.length === 0 ? (
-          <TourList tours={props.tours} />
-        ) : (
-          <TourList tours={sortedTours} />
-        )} */}
       </div>
     </Fragment>
 

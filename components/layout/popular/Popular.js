@@ -14,15 +14,13 @@ function Popular() {
 
   const toggleHandler = () => {
     setIshown(!isShown);
-    console.log(allCtx.popularTours);
   };
 
   if (allCtx.popularTours.length === 0) {
-    return <h1>There are no popular tours</h1>;
+    return <h1 style={{ display: "none" }}>There are no popular tours</h1>;
   }
 
   const leng = allCtx.popularTours.length - 1;
-  console.log(allCtx.popularTours[0]);
 
   return (
     <div className={styles} onClick={toggleHandler}>

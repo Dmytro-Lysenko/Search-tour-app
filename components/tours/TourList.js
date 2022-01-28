@@ -2,7 +2,6 @@ import TourItem from "./TourItem";
 import classes from "./TourList.module.css";
 
 function TourList(props) {
-  // console.log("props from list", props.tours);
   return (
     <ul className={classes.list}>
       {props.tours.map((tour) => (

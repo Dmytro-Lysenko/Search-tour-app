@@ -5,16 +5,9 @@ const BookedTours = (props) => {
   console.log(props);
   return (
     <div>
-      {/* {props.tours.map((tour) =>
-        tour.map((item) => {
-          return (
-            <div key={number}>
-              <h1>title: {item.title}</h1>
-              <h2>price: {item.price}</h2>
-            </div>
-          );
-        })
-      )} */}
+      <h1 style={{ textAlign: "center", color: "#77002e", fontSize: "2.2rem" }}>
+        Booked Tour Orders
+      </h1>
       <BookToursList bookedTour={props.tours} />
     </div>
   );

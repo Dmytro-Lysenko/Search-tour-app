@@ -1,7 +1,7 @@
 import classes from "./BookedTour.module.css";
+import Image from "next/image";
 
 const BookedTour = (props) => {
-  console.log("classlist id", props.id);
   const priceOfTours = props.tours.map((tour) => tour.priceForAllTourist);
   const totalOrderPrice = priceOfTours.reduce((a, b) => a + b, 0);
   return (

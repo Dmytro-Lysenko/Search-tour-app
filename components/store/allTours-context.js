@@ -6,7 +6,6 @@ const AllTourContext = createContext({
   popularTours: [],
   adToPopularTour: (tour) => {},
   setTours: (tour) => {},
-  searchTours: (name) => {},
 });
 
 export const AllTourContextProvider = (props) => {
@@ -19,19 +18,10 @@ export const AllTourContextProvider = (props) => {
 
   const addToPopularTourHandler = (tour) => {
     if (popTours.map((tours) => tours.id.includes(tour.id))) {
-      console.log("item is in popular");
     }
     setPopTours((prev) => {
       return [...prev, tour];
     });
-  };
-
-  const searchHandler = (price) => {
-    // const y = allTours.sort(function (a, b) {
-    //   return a.price - b.price;
-    // });
-    // setAllTours(y);
-    // console.log("click", allTours);
   };
 
   const context = {
@@ -40,7 +30,6 @@ export const AllTourContextProvider = (props) => {
     popularTours: popTours,
     adToPopularTour: addToPopularTourHandler,
     setTours: setHandler,
-    searchTours: searchHandler,
   };
 
   return (

@@ -29,7 +29,9 @@ const CartList = (props) => {
 
   return (
     <div>
-      Cart CartList
+      <h1 style={{ textAlign: "center", color: "rgb(119, 0, 46)" }}>
+        Cart Tours List
+      </h1>
       {props.tours.map((tour) => (
         <CartTour
           key={tour.id}

@@ -26,8 +26,6 @@ function AddModal(props) {
 
   const styles = `${classes.card} ${isShown ? classes.active : classes.card}`;
 
-  const style = `${classes.card}  ${isShown ? classes.bump : classes.card} `;
-
   return (
     <div className={styles}>
       <h1>{props.message}</h1>

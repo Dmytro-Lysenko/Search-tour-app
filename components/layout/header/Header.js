@@ -4,43 +4,21 @@ import * as FaIcons from "react-icons/fa";
 import * as IoIcons from "react-icons/io";
 import * as AiIcons from "react-icons/ai";
 import * as MdIcons from "react-icons/md";
-import { IconContext } from "react-icons";
 import HeaderCartButton from "../HeaderCartButton";
-import CartIcon from "../../ui/CartIcon";
+
 import classes from "./Header.module.css";
-import AddModal from "../AddModal";
 import FavoriteContext from "../../store/favorites-context";
 import CartContext from "../../store/cart-context";
+import LoadingIndicator from "../../ui/LoadingIndicator";
 
 function Header() {
   const [sideBar, setSideBar] = useState(true);
-  const favCtx = useContext(FavoriteContext);
-  const cartCtx = useContext(CartContext);
-  const [showCart, setShowCart] = useState();
-  const [showFavorites, setShowFavorites] = useState();
   const [theme, setTheme] = useState("light");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     document.body.setAttribute("data-theme", theme);
   }, [theme]);
-
-  // useEffect(() => {
-  //   if (
-  //     favCtx.message === "You have deleted tour from favorites!" &&
-  //     cartCtx.message === "You have added tour to cart!"
-  //   ) {
-  //     setShowFavorites(false);
-  //     setShowCart(true);
-  //   }
-
-  //   if (
-  //     favCtx.message === "You have added tour to favorites!" &&
-  //     cartCtx.message === "You have deleted tour from cart!"
-  //   ) {
-  //     setShowFavorites(true);
-  //     setShowCart(false);
-  //   }
-  // }, [cartCtx.message, favCtx.message]);
 
   const shoSideBarHandler = () => setSideBar(!sideBar);
   const navClass = `${classes["main-nav"]} ${sideBar ? " " : classes.active} `;
@@ -49,14 +27,22 @@ function Header() {
     setTheme(theme);
   };
 
+  const loadingHandler = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1800);
+  };
+
   return (
     <div>
+      {isLoading && <LoadingIndicator />}
       <nav className={classes.container}>
         <ul className={navClass} onClick={shoSideBarHandler}>
           <li>
             <AiIcons.AiOutlineCloseCircle className={classes.icons} />
           </li>
-          <li>
+          <li onClick={loadingHandler}>
             <FaIcons.FaHome className={classes.icons} />
             <Link href="/">All Tours</Link>
           </li>
@@ -68,15 +54,12 @@ function Header() {
             <FaIcons.FaShoppingCart className={classes.icons} />
             <Link href="/cart">Cart</Link>
           </li>
-          {/* <li className={classes.cart}>
-            <HeaderCartButton />
-          </li> */}
           <HeaderCartButton />
           <li>
             <IoIcons.IoIosAddCircleOutline className={classes.icons} />
             <Link href="/new-tour">Add tour</Link>
           </li>
-          <li>
+          <li onClick={loadingHandler}>
             <FaIcons.FaListAlt className={classes.icons} />
             <Link href="/booked-tours">Booked tours</Link>
           </li>
@@ -107,9 +90,6 @@ function Header() {
           </li>
         </div>
       </nav>
-      {/* <AddModal message={favCtx.message} /> */}
-      {/* {showFavorites === true && <AddModal message={favCtx.message} />}
-      {showCart === true && <AddModal message={cartCtx.message} />} */}
     </div>
   );
 }

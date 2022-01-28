@@ -8,29 +8,6 @@ const BookTourModal = (props) => {
   const cartCtx = useContext(CartContext);
   const [successOrder, setSuccessOrder] = useState(false);
 
-  // async function buyToursHandler() {
-  //   setSuccessOrder(true);
-
-  //   const newOrder = cartCtx.cartTours.map((tour) => tour);
-
-  //   const test = {
-  //     name: "Dima",
-  //     age: 17,
-  //   };
-
-  //   const response = await fetch("/api/new-booked-tour", {
-  //     method: "POST",
-  //     body: JSON.stringify(test),
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   });
-
-  //   const data = await response.json();
-
-  //   console.log(data);
-  // }
-
   async function buyToursHandler() {
     setSuccessOrder(true);
     const newOrder = cartCtx.cartTours;

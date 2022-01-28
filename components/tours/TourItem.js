@@ -6,6 +6,7 @@ import AllTourContext from "../store/allTours-context";
 import Card from "../ui/Card";
 import classes from "./TourItem.module.css";
 import AddModal from "../layout/AddModal";
+import LoadingIndicator from "../ui/LoadingIndicator";
 
 function TourItem(props) {
   const [readMore, setReadMore] = useState(false);
@@ -17,8 +18,10 @@ function TourItem(props) {
   const cartCtx = useContext(CartContext);
   const isInCart = cartCtx.isInCart(props.id);
   const isFavorite = favoritesCtx.isFavorite(props.id);
+  const [isLoading, setIsLoading] = useState(false);
 
   function showDetailsHandler(tour) {
+    setIsLoading(true);
     router.push("/" + tour.id);
     allCtx.adToPopularTour(tour);
   }
@@ -28,22 +31,11 @@ function TourItem(props) {
   };
 
   const addToFavorite = () => {
-    // if (
-    //   !isFavorite
-    //     ? setMes("You have added tour to favorites!")
-    //     : setMes("You have deleted tour from favorites!")
-    // )
     if (isFavorite) {
       favoritesCtx.deleteFromFavoritesTours(props.id);
-      // if (props.id === props.id) {
-      //   console.log("test");
       setMes("You have deleted tour from favorites!");
-      // }
     } else {
-      // if (props.id === props.id) {
-      //   console.log("test");
       setMes("You have added tour to favorites!");
-      // }
       const updTour = {
         ...props,
         isFav: true,
@@ -56,10 +48,7 @@ function TourItem(props) {
     if (isInCart) {
       cartCtx.deleteTourFromCart(props.id);
       cartCtx.delFromPrices(+props.price);
-      // if (props.id === props.id) {
-      //   console.log("test");
       setMes("You have deleted tour from cart!");
-      // }
     } else {
       const updatedTour = {
         ...props,
@@ -68,13 +57,9 @@ function TourItem(props) {
       };
       cartCtx.addTourToCart(updatedTour);
       cartCtx.addToPrices(+props.price);
-      // if (props.id === props.id) {
-      //   console.log("test");
       setMes("You have added tour to cart!");
-      // }
     }
   };
-  // console.log(favoritesCtx.favoriteTours);
 
   return (
     <li className={classes.item}>
@@ -112,6 +97,7 @@ function TourItem(props) {
             {!isInCart ? "Add to cart" : "Delete from cart"}
           </button>
         </div>
+        {isLoading && <LoadingIndicator />}
         <AddModal message={mes} />
       </Card>
     </li>

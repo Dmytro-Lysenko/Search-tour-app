@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./LoadingIndicator.module.css";
+import classes from "./LoadingIndicator.module.css";
 
 const LoadingIndicator = () => (
   <div className={classes["lds-ring"]}>

@@ -24,11 +24,6 @@ const HeaderCartButton = (props) => {
     };
   }, [cartCtx.cartTours.length]);
 
-  // const numberOfCartItems = cartContext.tours.reduce((curNum, item) => {
-  //   return curNum + item.amount;
-  // }, 0);
-  // const numberOfCartItems = cartCtx.totlaCartTours;
-
   const router = useRouter();
   const headerCartHandler = () => {
     router.push("/cart");

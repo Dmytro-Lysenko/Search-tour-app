@@ -27,7 +27,6 @@ export const CartContextProvider = (props) => {
 
   const addHandler = (tour) => {
     setMessage("You have added tour to cart!");
-    console.log(tour);
     setToursInCart((prevTours) => {
       return [...prevTours, tour];
     });
@@ -71,7 +70,6 @@ export const CartContextProvider = (props) => {
   };
 
   const increaseTouristHandler = (tourId) => {
-    // const filteredTour = toursInCart.filter(tour => tour.id === tourId)
     toursInCart.map((tour) => {
       if (tour.id === tourId) {
         tour.tourist += 1;
@@ -79,7 +77,6 @@ export const CartContextProvider = (props) => {
         return tour;
       }
     });
-    // console.log(filteredTour);
   };
   const decreaseTouristHandler = (tourId) => {
     toursInCart.map((tour) => {
