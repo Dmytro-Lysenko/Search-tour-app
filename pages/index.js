@@ -12,10 +12,13 @@ import Popular from "../components/layout/popular/Popular";
 import LoadingIndicator from "../components/ui/LoadingIndicator";
 
 const HomePage = (props) => {
-
   const allToursCtx = useContext(AllTourContext);
   const [allTours, setAllTours] = useState(allToursCtx.allTours);
   const [sortedTours, setSortedTours] = useState(props.tours);
+
+  useEffect(() => {
+    setSortedTours(props.tours);
+  }, []);
 
   const searchHandler = (input) => {
     let data = [...props.tours];
@@ -79,22 +82,26 @@ const HomePage = (props) => {
 
   return (
     <Fragment>
-      <Head>
-        <title>Tours</title>
-        <meta
-          name="description"
-          content="Choose some nice tour to visit new country!"
-        />
-      </Head>
-      <SearchForm onInput={searchHandler} tours={allTours} />
-      <Popular />
-      <div>
-        <SortedTours onSort={searchHandler} />
-        <TourList tours={sortedTours} />
-      </div>
+      {!props.tours ? (
+        <p>Test</p>
+      ) : (
+        <Fragment>
+          <Head>
+            <title>Tours</title>
+            <meta
+              name="description"
+              content="Choose some nice tour to visit new country!"
+            />
+          </Head>
+          <SearchForm onInput={searchHandler} tours={sortedTours} />
+          <Popular />
+          <div>
+            <SortedTours onSort={searchHandler} />
+            <TourList tours={sortedTours} />
+          </div>
+        </Fragment>
+      )}
     </Fragment>
-
-    // </CartProvider>
   );
 };
 

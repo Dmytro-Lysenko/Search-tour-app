@@ -4,7 +4,6 @@ import { Fragment } from "react";
 import BookToursList from "../../components/booked-tours/BookedToursList";
 
 const BookedTours = (props) => {
-  console.log(props);
   return (
     <Fragment>
       <Head>

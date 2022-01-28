@@ -21,7 +21,7 @@ function TourItem(props) {
   const [isLoading, setIsLoading] = useState(false);
 
   function showDetailsHandler(tour) {
-    // setIsLoading(true);
+    setIsLoading(true);
     router.push("/" + tour.id);
     allCtx.adToPopularTour(tour);
   }
@@ -72,17 +72,21 @@ function TourItem(props) {
           <h2>Country: {props.country}</h2>
           <h1>Price: {props.price}$</h1>
           <h1>Date: {props.date}</h1>
-          <p>
-            {readMore
-              ? props.description
-              : `${props.description.substring(0, 128)}...`}
-            <button
-              className={classes["read-more"]}
-              onClick={toogleReadMoreHandler}
-            >
-              {!readMore ? " read more" : " hide"}
-            </button>
-          </p>
+          {!props ? (
+            <p>Test</p>
+          ) : (
+            <p>
+              {readMore
+                ? props.description
+                : `${props.description.substring(0, 128)}...`}
+              <button
+                className={classes["read-more"]}
+                onClick={toogleReadMoreHandler}
+              >
+                {!readMore ? " read more" : " hide"}
+              </button>
+            </p>
+          )}
         </div>
         <div className={classes.actions}>
           <button onClick={() => showDetailsHandler(props)}>
