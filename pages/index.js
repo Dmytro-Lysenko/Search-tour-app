@@ -129,7 +129,6 @@ export async function getStaticProps() {
         id: tour._id.toString(),
       })),
     },
-    revalidate: 3,
   };
 }
 
