@@ -1,15 +1,28 @@
 import { MongoClient } from "mongodb";
+import Head from "next/head";
+import { Fragment } from "react";
 import BookToursList from "../../components/booked-tours/BookedToursList";
 
 const BookedTours = (props) => {
   console.log(props);
   return (
-    <div>
-      <h1 style={{ textAlign: "center", color: "#77002e", fontSize: "2.2rem" }}>
-        Booked Tour Orders
-      </h1>
-      <BookToursList bookedTour={props.tours} />
-    </div>
+    <Fragment>
+      <Head>
+        <title>Booked Tours</title>
+        <meta
+          name="description"
+          content="The list of all booked tours"
+        />
+      </Head>
+      <div>
+        <h1
+          style={{ textAlign: "center", color: "#77002e", fontSize: "2.2rem" }}
+        >
+          Booked Tour Orders
+        </h1>
+        <BookToursList bookedTour={props.tours} />
+      </div>
+    </Fragment>
   );
 };
 
