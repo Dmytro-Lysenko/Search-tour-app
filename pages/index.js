@@ -14,7 +14,7 @@ import LoadingIndicator from "../components/ui/LoadingIndicator";
 const HomePage = (props) => {
   const allToursCtx = useContext(AllTourContext);
   const [allTours, setAllTours] = useState(allToursCtx.allTours);
-  const [sortedTours, setSortedTours] = useState(props.tours);
+  const [sortedTours, setSortedTours] = useState(props.tours || null);
 
   useEffect(() => {
     setSortedTours(props.tours);
@@ -129,6 +129,7 @@ export async function getStaticProps() {
         id: tour._id.toString(),
       })),
     },
+    revalidate: 1,
   };
 }
 
