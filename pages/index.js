@@ -82,7 +82,7 @@ const HomePage = (props) => {
 
   return (
     <Fragment>
-      {!props.tours ? (
+      {props.tours === null ? (
         <p>Test</p>
       ) : (
         <Fragment>
