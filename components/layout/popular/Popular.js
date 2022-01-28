@@ -3,6 +3,7 @@ import classes from "./Popular.module.css";
 import * as FaIcons from "react-icons/fa";
 import AllTourContext from "../../store/allTours-context";
 import { useContext } from "react/cjs/react.development";
+import Image from "next/image";
 
 function Popular() {
   const [isShown, setIshown] = useState(false);
@@ -31,19 +32,36 @@ function Popular() {
       <div className={classes.content}>
         <h1>{allCtx.popularTours[leng].title}</h1>
         <div className={classes.photo}>
-          <img
+          {/* <img
             src={allCtx.popularTours[leng].photo}
             alt={allCtx.popularTours[leng].title}
+          /> */}
+
+          <Image
+            src={allCtx.popularTours[leng].photo}
+            alt={allCtx.popularTours[leng].title}
+            width={100}
+            height={60}
           />
         </div>
       </div>
       <div className={classes.content}>
         <h1>{leng > 1 && allCtx.popularTours[leng - 1].title}</h1>
         <div className={classes.photo}>
-          <img
+          {/* <img
             src={leng > 1 && allCtx.popularTours[leng - 1].photo}
             alt={leng > 1 && allCtx.popularTours[leng - 1].title}
-          />
+          /> */}
+          {leng > 1 ? (
+            <Image
+              src={allCtx.popularTours[leng - 1].photo}
+              alt={allCtx.popularTours[leng - 1].title}
+              width={100}
+              height={60}
+            />
+          ) : (
+            " "
+          )}
         </div>
       </div>
     </div>

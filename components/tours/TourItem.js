@@ -21,7 +21,7 @@ function TourItem(props) {
   const [isLoading, setIsLoading] = useState(false);
 
   function showDetailsHandler(tour) {
-    setIsLoading(true);
+    // setIsLoading(true);
     router.push("/" + tour.id);
     allCtx.adToPopularTour(tour);
   }
