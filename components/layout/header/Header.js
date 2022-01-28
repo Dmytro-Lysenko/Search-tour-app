@@ -37,6 +37,16 @@ function Header() {
   return (
     <div>
       {isLoading && <LoadingIndicator />}
+      <div className={classes.github}>
+        Currently in development
+        <a
+          href="https://github.com/Dmytro-Lysenko/Search-tour-app"
+          rel="noreferrer"
+          target="_blank"
+        >
+          Source code
+        </a>
+      </div>
       <nav className={classes.container}>
         <ul className={navClass} onClick={shoSideBarHandler}>
           <li>

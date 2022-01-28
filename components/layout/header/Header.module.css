@@ -11,6 +11,21 @@
   margin-bottom: 2rem;
 }
 
+.github {
+  text-align: center;
+  background-color: orange;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  padding: 0.2rem;
+}
+
+.github a {
+  text-decoration: underline;
+  color: blue;
+  padding-left: 1rem;
+}
+
 .main-nav {
   display: flex;
   flex: 3;
