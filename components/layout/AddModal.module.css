@@ -25,6 +25,7 @@
   top: 100px;
   transition: ease-in-out 900ms;
   background-color: darkcyan;
+  z-index: 0;
 }
 
 .card h1 {

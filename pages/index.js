@@ -94,7 +94,7 @@ const HomePage = (props) => {
             />
           </Head>
           <SearchForm onInput={searchHandler} tours={sortedTours} />
-          <Popular />
+          {/* <Popular /> */}
           <div>
             <SortedTours onSort={searchHandler} />
             <TourList tours={sortedTours} />
