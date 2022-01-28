@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { useState } from "react/cjs/react.development";
 import classes from "./SortedTours.module.css";
 
@@ -50,17 +50,22 @@ function SortedTours(props) {
   };
 
   return (
-    <div className={classes.container}>
-      <button className={stylesDate} onClick={() => sortHandler("date")}>
-        By date
-      </button>
-      <button className={stylesPrice} onClick={() => sortHandler("price")}>
-        By price
-      </button>
-      <button className={stylesCountry} onClick={() => sortHandler("country")}>
-        By country
-      </button>
-    </div>
+    <Fragment>
+      <div className={classes.container}>
+        <button className={stylesDate} onClick={() => sortHandler("date")}>
+          By date
+        </button>
+        <button className={stylesPrice} onClick={() => sortHandler("price")}>
+          By price
+        </button>
+        <button
+          className={stylesCountry}
+          onClick={() => sortHandler("country")}
+        >
+          By country
+        </button>
+      </div>
+    </Fragment>
   );
 }
 

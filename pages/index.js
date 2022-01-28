@@ -21,7 +21,11 @@ const HomePage = (props) => {
   }, []);
 
   const searchHandler = (input) => {
-    let data = [...props.tours];
+    if (sortedTours === null) {
+      return;
+    }
+    let data = [...sortedTours];
+
     setSortedTours(
       props.tours.filter((tour) => {
         if (tour.title.toLowerCase().includes(input.toLowerCase())) {
